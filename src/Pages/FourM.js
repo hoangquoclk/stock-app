@@ -2,12 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import {setCdkt, setKqhdkd, setLcttgt, setChiSoDN_4M, setDiemDN_4M,
-     isLoading, unLoading, setTongDiem, setCurrentPage} from '../Actions';
+     isLoading, unLoading, setTongDiem, setCurrentPage, setChiSoCanslim} from '../Actions';
 import Loading from '../Components/Loading';
 
 const urlKQKD = "https://localhost:5001/api/home/kqkd";
 const urlCDKT = "https://localhost:5001/api/home/cdkt";
 const urlLCTTGT = "https://localhost:5001/api/home/lctt";
+const urlKQKD_Quy = "https://localhost:5001/api/home/kqkd-quy";
+const urlCDKT_Quy = "https://localhost:5001/api/home/cdkt-quy";
 
 const FourM = () => {
     const dispatch = useDispatch();
@@ -27,6 +29,12 @@ const FourM = () => {
     const loading = useSelector(state => state.loading);
 
     const tongDiem = useSelector(state => state.tongDiem);
+
+    const currentPage = useSelector(state => state.currentPage);
+
+    const canslim = useSelector(state => state.canslim);
+
+    const tongDiemCanslim = useSelector(state => state.tongDiemCanslim); 
 
     const year_periods = [1, 3, 5];
     const year_proportion = [30, 35, 35];
@@ -126,7 +134,6 @@ const FourM = () => {
         const data = [cdkt_1, cdkt_2, cdkt_3, cdkt_4, cdkt_5,
             cdkt_6, cdkt_7, cdkt_8, cdkt_9, cdkt_10, cdkt_11, cdkt_12, cdkt_13, cdkt_14,
             cdkt_15, cdkt_16, cdkt_17, cdkt_18, cdkt_19, cdkt_20, cdkt_21, cdkt_22, cdkt_23];
-        // console.log(data);
         dispatch(setKqhdkd(data));
     }
     
@@ -225,7 +232,6 @@ const FourM = () => {
         const data = [cdkt_1, cdkt_2, cdkt_3, cdkt_4, cdkt_5,
             cdkt_6, cdkt_7, cdkt_8, cdkt_9, cdkt_10, cdkt_11, cdkt_12, cdkt_13, cdkt_14,
             cdkt_15, cdkt_16, cdkt_17, cdkt_18, cdkt_19, cdkt_20, cdkt_21, cdkt_22, cdkt_23];
-        // console.log(data);
         dispatch(setCdkt(data));
     }
 
@@ -272,7 +278,6 @@ const FourM = () => {
         });
         const data = [cdkt_1, cdkt_2, cdkt_3, cdkt_4, cdkt_5,
             cdkt_6];
-        // console.log(data);
         dispatch(setLcttgt(data));
     }
 
@@ -283,8 +288,8 @@ const FourM = () => {
             getDataCDKT(years);
             getDataKQHDKD(years);
             getDataLCTT(years);
+            dispatch(setCurrentPage('trangChinh'));
         }
-        // console.log(company);
     }, [company]);
 
     useEffect(() => {
@@ -299,13 +304,14 @@ const FourM = () => {
     useEffect(() => {
         if(chiSoDN_4M[0]) {
             createDiemDN_4M();
-            console.log(chiSoDN_4M[0]);
         }
     }, [chiSoDN_4M]);
 
     useEffect(() => {
-        dispatch(setCurrentPage('trangChinh'));
-    }, [])
+        if(company){
+            createCanslimDN();
+        }
+    }, [company]);
 
     const createChiSoDN_4M = () => {
         const data = [];
@@ -536,14 +542,454 @@ const FourM = () => {
 
     }
 
+    // const getKQKDQuy = async(company, year, quy) => {
+    //     const data = await axios({
+    //         method: 'post',
+    //         url: urlKQKD_Quy,
+    //         data: {
+    //             name: company,
+    //             quy: quy,
+    //             year: year
+    //         }
+    //     }).then(({data}) => data);
+    //     return data;
+    // }
+
+
+    const createCanslimDN = async() => {
+        const data = [];
+        const SALE1 = [];
+        const SALE2 = [];
+        const SALE3 = [];
+        const SALE4 = [];
+        const EPS1 = [];
+        const EPS2 = [];
+        const EPS3 = [];
+        const EPS4 = [];
+        const COPHIEU = [];
+        const LOINHUAN = [];
+        let C = null;
+        let A = null;
+        let TongDiem = null;
+
+        const kqhdkd_1_2019 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 1,
+                year: 2019
+            }
+        }).then(({data}) => {
+            SALE4[0] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[0] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_2_2019 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 2,
+                year: 2019
+            }
+        }).then(({data}) => {
+            SALE3[0] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE4[1] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[1] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_3_2019 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 3,
+                year: 2019
+            }
+        }).then(({data}) => {
+            SALE3[1] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE4[2] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[2] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_4_2019 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 4,
+                year: 2019
+            }
+        }).then(({data}) => {
+            SALE2[0] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE3[2] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE4[3] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[3] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+        
+        const kqhdkd_1_2020 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 1,
+                year: 2020
+            }
+        }).then(({data}) => {
+            SALE1[0] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE3[3] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE4[4] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[4] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_2_2020 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 2,
+                year: 2020
+            }
+        }).then(({data}) => {
+            SALE3[4] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE4[5] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[5] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_3_2020 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 3,
+                year: 2020
+            }
+        }).then(({data}) => {
+            SALE3[5] = parseFloat(data[0][1].replace(/,/g, '')); 
+            SALE4[6] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[6] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_4_2020 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 4,
+                year: 2020
+            }
+        }).then(({data}) => {
+            SALE2[1] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE3[6] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE4[7] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[7] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        const kqhdkd_1_2021 = await axios({
+            method: 'post',
+            url: urlKQKD_Quy,
+            data: {
+                name: company,
+                quy: 1,
+                year: 2021
+            }
+        }).then(({data}) => {
+            SALE1[1] = parseFloat(data[0][1].replace(/,/g, ''));
+            SALE3[7] = parseFloat(data[0][1].replace(/,/g, ''));
+            LOINHUAN[8] = parseFloat(data[19][1].replace(/,/g, ''));
+        });
+
+        // LAY SO CO PHIEU
+        const cdkt_1_2019 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 1,
+                year: 2019
+            }
+        }).then(({data}) => {
+            COPHIEU[0] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_2_2019 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 2,
+                year: 2019
+            }
+        }).then(({data}) => {
+            COPHIEU[1] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_3_2019 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 3,
+                year: 2019
+            }
+        }).then(({data}) => {
+            COPHIEU[2] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_4_2019 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 4,
+                year: 2019
+            }
+        }).then(({data}) => {
+            COPHIEU[3] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+        
+        const cdkt_1_2020 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 1,
+                year: 2020
+            }
+        }).then(({data}) => {
+            COPHIEU[4] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_2_2020 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 2,
+                year: 2020
+            }
+        }).then(({data}) => {
+            COPHIEU[5] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_3_2020 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 3,
+                year: 2020
+            }
+        }).then(({data}) => {
+            COPHIEU[6] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_4_2020 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 4,
+                year: 2020
+            }
+        }).then(({data}) => {
+            COPHIEU[7] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        const cdkt_1_2021 = await axios({
+            method: 'post',
+            url: urlCDKT_Quy,
+            data: {
+                name: company,
+                quy: 1,
+                year: 2021
+            }
+        }).then(({data}) => {
+            COPHIEU[8] = parseFloat(data[97][1].replace(/,/g, ''));
+        });
+
+        for(let i = 0; i < COPHIEU.length; i++) {
+            if(isNaN(COPHIEU[i])) {
+                if(i === COPHIEU.length - 1) {
+                    COPHIEU[i] = COPHIEU[i-1];
+                }
+                else {
+                    COPHIEU[i] = COPHIEU[i+1];
+                }
+            }
+
+            if(isNaN(LOINHUAN[i])) {
+                if(i === COPHIEU.length - 1) {
+                    LOINHUAN[i] = LOINHUAN[i-1];
+                }
+                else {
+                    LOINHUAN[i] = LOINHUAN[i+1];
+                }
+            }
+        }
+        
+        //EPS
+        // q1 - 2019
+        EPS4[0] = Math.round((LOINHUAN[0] / COPHIEU[0] * 10000) * 100 ) / 100;
+        // q2 - 2019
+        EPS4[1] = Math.round((LOINHUAN[1] / COPHIEU[1] * 10000) * 100 ) / 100;
+        EPS3[0] = Math.round((LOINHUAN[1] / COPHIEU[1] * 10000) * 100 ) / 100;
+        // q3 - 2019
+        EPS4[2] = Math.round((LOINHUAN[2] / COPHIEU[2] * 10000) * 100 ) / 100;
+        EPS3[1] = Math.round((LOINHUAN[2] / COPHIEU[2] * 10000) * 100 ) / 100;
+        // q4 - 2019
+        EPS4[3] = Math.round((LOINHUAN[3] / COPHIEU[3] * 10000) * 100 ) / 100;
+        EPS3[2] = Math.round((LOINHUAN[3] / COPHIEU[3] * 10000) * 100 ) / 100;
+        EPS2[0] = Math.round((LOINHUAN[3] / COPHIEU[3] * 10000) * 100 ) / 100;
+        // q1 - 2020
+        EPS4[4] = Math.round((LOINHUAN[4] / COPHIEU[4] * 10000) * 100 ) / 100;
+        EPS3[3] = Math.round((LOINHUAN[4] / COPHIEU[4] * 10000) * 100 ) / 100;
+        EPS1[0] = Math.round((LOINHUAN[4] / COPHIEU[4] * 10000) * 100 ) / 100;
+        // q2 - 2020
+        EPS4[5] = Math.round((LOINHUAN[5] / COPHIEU[5] * 10000) * 100 ) / 100;
+        EPS3[4] = Math.round((LOINHUAN[5] / COPHIEU[5] * 10000) * 100 ) / 100;
+        // q3 - 2020
+        EPS4[6] = Math.round((LOINHUAN[6] / COPHIEU[6] * 10000) * 100 ) / 100;
+        EPS3[5] = Math.round((LOINHUAN[6] / COPHIEU[6] * 10000) * 100 ) / 100;
+        // q4 - 2020
+        EPS4[7] = Math.round((LOINHUAN[7] / COPHIEU[7] * 10000) * 100 ) / 100;
+        EPS3[6] = Math.round((LOINHUAN[7] / COPHIEU[7] * 10000) * 100 ) / 100;
+        EPS2[1] = Math.round((LOINHUAN[7] / COPHIEU[7] * 10000) * 100 ) / 100;
+        // q1 - 2021
+        EPS3[7] = Math.round((LOINHUAN[8] / COPHIEU[8] * 10000) * 100 ) / 100;
+        EPS1[1] = Math.round((LOINHUAN[8] / COPHIEU[8] * 10000) * 100 ) / 100;
+
+        // console.log(LOINHUAN);
+        // console.log(COPHIEU);
+        // console.log(EPS1);
+        // console.log(EPS2);
+        // console.log(EPS3);
+        // console.log(EPS4);
+        
+        SALE1[2] = Math.round(((SALE1[1] - SALE1[0]) / SALE1[0] * 100) *100) / 100;
+        SALE2[2] = Math.round(((SALE2[1] - SALE2[0]) / SALE2[0] * 100) *100) / 100;
+        SALE3[8] = Math.round((((SALE3[4] + SALE3[5] + SALE3[6] + SALE3[7]) 
+        - (SALE3[0] + SALE3[1] + SALE3[2] + SALE3[3])) / (SALE3[0] + SALE3[1] + SALE3[2] + SALE3[3]) 
+        * 100) *100) / 100;
+        SALE4[8] = Math.round((((SALE4[4] + SALE4[5] + SALE4[6] + SALE4[7]) 
+        - (SALE4[0] + SALE4[1] + SALE4[2] + SALE4[3])) / (SALE4[0] + SALE4[1] + SALE4[2] + SALE4[3]) 
+        * 100) *100) / 100;
+
+        EPS1[2] = Math.round(((EPS1[1] - EPS1[0]) / EPS1[0] * 100) *100) / 100;
+        EPS2[2] = Math.round(((EPS2[1] - EPS2[0]) / EPS2[0] * 100) *100) / 100;
+        EPS3[8] = Math.round((((EPS3[4] + EPS3[5] + EPS3[6] + EPS3[7]) 
+        - (EPS3[0] + EPS3[1] + EPS3[2] + EPS3[3])) / (EPS3[0] + EPS3[1] + EPS3[2] + EPS3[3]) 
+        * 100) *100) / 100;
+        EPS4[8] = Math.round((((EPS4[4] + EPS4[5] + EPS4[6] + EPS4[7]) 
+        - (EPS4[0] + EPS4[1] + EPS4[2] + EPS4[3])) / (EPS4[0] + EPS4[1] + EPS4[2] + EPS4[3]) 
+        * 100) *100) / 100;
+
+        // tham chiếu
+        SALE1[3] = 25;
+        SALE2[3] = 25;
+        SALE3[9] = 20;
+        SALE4[9] = 20;
+        EPS1[3] = 25;
+        EPS2[3] = 25;
+        EPS3[9] = 20;
+        EPS4[9] = 20;
+
+        //tỷ trọng thành phần
+        SALE1[4] = 15;
+        SALE2[4] = 10;
+        SALE3[10] = 10;
+        SALE4[10] = 5;
+        EPS1[4] = 20;
+        EPS2[4] = 15;
+        EPS3[10] = 15;
+        EPS4[10] = 10;
+        // điểm sale
+        if(SALE1[2] >= SALE1[3]) {
+            SALE1[5] = SALE1[4];
+        }
+        else {
+            SALE1[5] = Math.round((SALE1[2] / SALE1[3] * SALE1[4]) * 100) / 100;
+        }
+
+        if(SALE2[2] >= SALE2[3]) {
+            SALE2[5] = SALE2[4];
+        }
+        else {
+            SALE2[5] = Math.round((SALE2[2] / SALE2[3] * SALE2[4]) * 100) / 100;
+        }
+
+        if(SALE3[8] >= SALE3[9]) {
+            SALE3[11] = SALE3[10];
+        }
+        else {
+            SALE3[11] = Math.round((SALE3[8] / SALE3[9] * SALE3[10]) * 100) / 100;
+        }
+
+        if(SALE4[8] >= SALE4[9]) {
+            SALE4[11] = SALE4[10];
+        }
+        else {
+            SALE4[11] = Math.round((SALE4[8] / SALE4[9] * SALE4[10]) * 100) / 100;
+        }
+
+        // điểm EPS
+        if(EPS1[2] >= EPS1[3]) {
+            EPS1[5] = EPS1[4];
+        }
+        else {
+            EPS1[5] = Math.round((EPS1[2] / EPS1[3] * EPS1[4]) * 100) / 100;
+        }
+
+        if(EPS2[2] >= EPS2[3]) {
+            EPS2[5] = EPS2[4];
+        }
+        else {
+            EPS2[5] = Math.round((EPS2[2] / EPS2[3] * EPS2[4]) * 100) / 100;
+        }
+
+        if(EPS3[8] >= EPS3[9]) {
+            EPS3[11] = EPS3[10];
+        }
+        else {
+            EPS3[11] = Math.round((EPS3[8] / EPS3[9] * EPS3[10]) * 100) / 100;
+        }
+
+        if(EPS4[8] >= EPS4[9]) {
+            EPS4[11] = EPS4[10];
+        }
+        else {
+            EPS4[11] = Math.round((EPS4[8] / EPS4[9] * EPS4[10]) * 100) / 100;
+        }
+        
+        C = SALE1[5] + SALE2[5] + EPS1[5] + EPS2[5];
+        A = SALE3[11] + SALE4[11] + EPS3[11] + EPS4[11];
+
+        TongDiem = A + C;
+
+        data.push(SALE1);
+        data.push(SALE2);
+        data.push(SALE3);
+        data.push(SALE4);
+        data.push(EPS1);
+        data.push(EPS2);
+        data.push(EPS3);
+        data.push(EPS4);
+        data.push(C);
+        data.push(A);
+        data.push(TongDiem);
+        dispatch(setChiSoCanslim(data));
+    }
+
     if(loading) {
         return (
             <Loading />
         );
     }
 
-    return(
-        <>
+    if(currentPage === 'trangChinh') {
+        return (
+            <>
         {
             cdkt.length !== 0 && (
                 <div className="can-doi-ke-toan">
@@ -785,7 +1231,13 @@ const FourM = () => {
             </div>
             )
         }
+            </>
+        );
+    }
 
+    else if(currentPage === '4M') {
+        return (
+            <>
             <div className="anh">
                 <h1>PHÂN TÍCH 4M DOANH NGHIỆP</h1>
             </div>
@@ -936,7 +1388,238 @@ const FourM = () => {
             </div>
             )
         }
-        </>
+            </>
+        );
+        
+    }
+
+    return(
+        <>
+        {
+            canslim.length !== 0 && (
+                <div className="canslim">
+                <h1>Canslim</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colSpan="11" rowSpan="2">
+                            
+                            </th>
+                            <th rowSpan="2">
+                                THAM CHIẾU
+                            </th>
+                            <th rowSpan="2">
+                                TỶ TRỌNG
+                            </th>
+                            <th>
+                                C
+                            </th>
+                            <th>
+                                A
+                            </th>
+                            <th rowSpan="2">
+                                TỔNG ĐIỂM
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                {canslim[8]}
+                            </th>
+                            <th>
+                                {canslim[9]}
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr className="childData">
+                            <td rowSpan="8">Tiêu chí SALE</td>
+                            <td rowSpan="2">1 Quý gần nhất (C)</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td>Q1 2020</td>
+                            <td>Q1 2021</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[0][2]}%</td>
+                            <td rowSpan="2">{canslim[0][3]}%</td>
+                            <td rowSpan="2">{canslim[0][4]}%</td>
+                            <td rowSpan="2">{canslim[0][5]}</td>
+                            <td rowSpan="2"></td>
+                            <td rowSpan="17">{canslim[10]}</td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[0][0]}</td>
+                            <td>{canslim[0][1]}</td>
+                        </tr>
+                        <tr className="childData">
+                            <td rowSpan="2">1 Quý trước đó gần nhất (C)</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td>Q4 2019</td>
+                            <td>Q4 2020</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[1][2]}%</td>
+                            <td rowSpan="2">{canslim[1][3]}%</td>
+                            <td rowSpan="2">{canslim[1][4]}%</td>
+                            <td rowSpan="2">{canslim[1][5]}</td>
+                            <td rowSpan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[1][0]}</td>
+                            <td>{canslim[1][1]}</td>
+                        </tr>
+                        
+                        <tr className="childData">
+                            <td rowSpan="2">Trailing 12 tháng gần nhất (A)</td>
+                            <td>Q2 2019</td>
+                            <td>Q3 2019</td>
+                            <td>Q4 2019</td>
+                            <td>Q1 2020</td>
+                            <td>Q2 2020</td>
+                            <td>Q3 2020</td>
+                            <td>Q4 2020</td>
+                            <td>Q1 2021</td>
+                            
+                            <td rowSpan="2">{canslim[2][8]}%</td>
+                            <td rowSpan="2">{canslim[2][9]}%</td>
+                            <td rowSpan="2">{canslim[2][10]}%</td>
+                            <td rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[2][11]}</td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[2][0]}</td>
+                            <td>{canslim[2][1]}</td>
+                            <td>{canslim[2][2]}</td>
+                            <td>{canslim[2][3]}</td>
+                            <td>{canslim[2][4]}</td>
+                            <td>{canslim[2][5]}</td>
+                            <td>{canslim[2][6]}</td>
+                            <td>{canslim[2][7]}</td>
+                        </tr>
+                        <tr className="childData">
+                            <td rowSpan="2">Trailing 12 tháng gần nhất trước đó (A)</td>
+                            <td>Q1 2019</td>
+                            <td>Q2 2019</td>
+                            <td>Q3 2019</td>
+                            <td>Q4 2019</td>
+                            <td>Q1 2020</td>
+                            <td>Q2 2020</td>
+                            <td>Q3 2020</td>
+                            <td>Q4 2020</td>
+                            
+                            <td rowSpan="2">{canslim[3][8]}%</td>
+                            <td rowSpan="2">{canslim[3][9]}%</td>
+                            <td rowSpan="2">{canslim[3][10]}%</td>
+                            <td rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[3][11]}</td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[3][0]}</td>
+                            <td>{canslim[3][1]}</td>
+                            <td>{canslim[3][2]}</td>
+                            <td>{canslim[3][3]}</td>
+                            <td>{canslim[3][4]}</td>
+                            <td>{canslim[3][5]}</td>
+                            <td>{canslim[3][6]}</td>
+                            <td>{canslim[3][7]}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan="15">
+                            </td>
+                        </tr>
+
+
+                        
+                        <tr className="childData">
+                            <td rowSpan="8">Tiêu chí EPS</td>
+                            <td rowSpan="2">1 Quý gần nhất (C)</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td>Q1 2020</td>
+                            <td>Q1 2021</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[4][2]}%</td>
+                            <td rowSpan="2">{canslim[4][3]}%</td>
+                            <td rowSpan="2">{canslim[4][4]}%</td>
+                            <td rowSpan="2">{canslim[4][5]}</td>
+                            <td rowSpan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[4][0]}</td>
+                            <td>{canslim[4][1]}</td>
+                        </tr>
+                        <tr className="childData">
+                            <td rowSpan="2">1 Quý trước đó gần nhất (C)</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td>Q4 2019</td>
+                            <td>Q4 2020</td>
+                            <td colSpan="3" rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[5][2]}%</td>
+                            <td rowSpan="2">{canslim[5][3]}%</td>
+                            <td rowSpan="2">{canslim[5][4]}%</td>
+                            <td rowSpan="2">{canslim[5][5]}</td>
+                            <td rowSpan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[5][0]}</td>
+                            <td>{canslim[5][1]}</td>
+                        </tr>
+                        
+                        <tr className="childData">
+                            <td rowSpan="2">Trailing 12 tháng gần nhất (A)</td>
+                            <td>Q2 2019</td>
+                            <td>Q3 2019</td>
+                            <td>Q4 2019</td>
+                            <td>Q1 2020</td>
+                            <td>Q2 2020</td>
+                            <td>Q3 2020</td>
+                            <td>Q4 2020</td>
+                            <td>Q1 2021</td>                   
+                            <td rowSpan="2">{canslim[6][8]}%</td>
+                            <td rowSpan="2">{canslim[6][9]}%</td>
+                            <td rowSpan="2">{canslim[6][10]}%</td>
+                            <td rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[6][11]}</td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[6][0]}</td>
+                            <td>{canslim[6][1]}</td>
+                            <td>{canslim[6][2]}</td>
+                            <td>{canslim[6][3]}</td>
+                            <td>{canslim[6][4]}</td>
+                            <td>{canslim[6][5]}</td>
+                            <td>{canslim[6][6]}</td>
+                            <td>{canslim[6][7]}</td>
+                        </tr>
+                        <tr className="childData">
+                            <td rowSpan="2">Trailing 12 tháng gần nhất trước đó (A)</td>
+                            <td>Q1 2019</td>
+                            <td>Q2 2019</td>
+                            <td>Q3 2019</td>
+                            <td>Q4 2019</td>
+                            <td>Q1 2020</td>
+                            <td>Q2 2020</td>
+                            <td>Q3 2020</td>
+                            <td>Q4 2020</td>                   
+                            <td rowSpan="2">{canslim[7][8]}%</td>
+                            <td rowSpan="2">{canslim[7][9]}%</td>
+                            <td rowSpan="2">{canslim[7][10]}%</td>
+                            <td rowSpan="2"></td>
+                            <td rowSpan="2">{canslim[7][11]}</td>
+                        </tr>
+                        <tr>
+                            <td>{canslim[7][0]}</td>
+                            <td>{canslim[7][1]}</td>
+                            <td>{canslim[7][2]}</td>
+                            <td>{canslim[7][3]}</td>
+                            <td>{canslim[7][4]}</td>
+                            <td>{canslim[7][5]}</td>
+                            <td>{canslim[7][6]}</td>
+                            <td>{canslim[7][7]}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            )
+        }
+        </> 
     );
 }
 

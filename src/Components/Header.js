@@ -42,21 +42,13 @@ const Header = () => {
     }
 
     const handlePage = () => {
-        // console.log(radio);
         let radio = document.getElementsByName('analysis');
         radio.forEach((ele) => {
             if(ele.checked) {
                 dispatch(setCurrentPage(ele.value));
-                // window.location.href = "http://localhost:3000/canslim";
             }
         })
     }
-
-    useEffect(() => {
-        if(currentPage === 'canslim') {
-            window.location.href = "http://localhost:3000/canslim";
-        }
-    }, [currentPage]);
 
     return(
         <>
@@ -92,6 +84,7 @@ const Header = () => {
             {
                 companyName && <div className="choose-analysis">
                 <input type="radio" name="analysis" id="trangChinh"
+                defaultChecked
                 onClick={() => handlePage()}
                  value="trangChinh" />
                 <label htmlFor="trangChinh">Thông tin chính</label>

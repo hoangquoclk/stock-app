@@ -112,31 +112,31 @@ header .title-web {
   margin-left: 10px;
 }
 
-.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so {
+.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so, .canslim {
   width: 95%;
   margin: 100px auto;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1 {
+.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1, .canslim h1 {
   text-align: center;
   color: #ca0f0f;
 }
 
-.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table {
+.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table, .canslim table {
   width: 95%;
   margin: 0px auto;
   overflow: hidden;
 }
 
-.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th {
+.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th, .canslim table thead tr th {
   padding: 10px;
   border: 1px solid #202b33;
   background: #202b33;
   color: white;
 }
 
-.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button {
+.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button, .canslim table thead tr th button {
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -145,58 +145,58 @@ header .title-web {
   height: 30px;
 }
 
-.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover {
+.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover, .canslim table thead tr th button:hover {
   background-color: #ca0f0f;
   color: white;
 }
 
-.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th {
+.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th, .canslim table tbody tr th {
   background: #9dbade;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th {
+.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th, .canslim table tbody tr.parentData th {
   text-align: left;
   background: #9dbade;
   text-transform: uppercase;
 }
 
-.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td {
+.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td, .canslim table tbody tr td {
   background: #f2fcff;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td {
+.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td, .canslim table tbody tr.childData td {
   background: #f2fcff;
   padding: 7px;
   font-weight: 700;
 }
 
-.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so {
+.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so, .canslim {
   width: 95%;
   margin: 100px auto;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1 {
+.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1, .canslim h1 {
   text-align: center;
   color: #ca0f0f;
 }
 
-.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table {
+.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table, .canslim table {
   width: 95%;
   margin: 0px auto;
   overflow: hidden;
 }
 
-.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th {
+.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th, .canslim table thead tr th {
   padding: 10px;
   border: 1px solid #202b33;
   background: #202b33;
   color: white;
 }
 
-.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button {
+.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button, .canslim table thead tr th button {
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -205,58 +205,58 @@ header .title-web {
   height: 30px;
 }
 
-.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover {
+.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover, .canslim table thead tr th button:hover {
   background-color: #ca0f0f;
   color: white;
 }
 
-.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th {
+.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th, .canslim table tbody tr th {
   background: #9dbade;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th {
+.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th, .canslim table tbody tr.parentData th {
   text-align: left;
   background: #9dbade;
   text-transform: uppercase;
 }
 
-.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td {
+.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td, .canslim table tbody tr td {
   background: #f2fcff;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td {
+.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td, .canslim table tbody tr.childData td {
   background: #f2fcff;
   padding: 7px;
   font-weight: 700;
 }
 
-.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so {
+.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so, .canslim {
   width: 95%;
   margin: 100px auto;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1 {
+.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1, .canslim h1 {
   text-align: center;
   color: #ca0f0f;
 }
 
-.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table {
+.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table, .canslim table {
   width: 95%;
   margin: 0px auto;
   overflow: hidden;
 }
 
-.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th {
+.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th, .canslim table thead tr th {
   padding: 10px;
   border: 1px solid #202b33;
   background: #202b33;
   color: white;
 }
 
-.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button {
+.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button, .canslim table thead tr th button {
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -265,58 +265,58 @@ header .title-web {
   height: 30px;
 }
 
-.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover {
+.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover, .canslim table thead tr th button:hover {
   background-color: #ca0f0f;
   color: white;
 }
 
-.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th {
+.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th, .canslim table tbody tr th {
   background: #9dbade;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th {
+.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th, .canslim table tbody tr.parentData th {
   text-align: left;
   background: #9dbade;
   text-transform: uppercase;
 }
 
-.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td {
+.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td, .canslim table tbody tr td {
   background: #f2fcff;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td {
+.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td, .canslim table tbody tr.childData td {
   background: #f2fcff;
   padding: 7px;
   font-weight: 700;
 }
 
-.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so {
+.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so, .canslim {
   width: 95%;
   margin: 100px auto;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1 {
+.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1, .canslim h1 {
   text-align: center;
   color: #ca0f0f;
 }
 
-.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table {
+.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table, .canslim table {
   width: 95%;
   margin: 0px auto;
   overflow: hidden;
 }
 
-.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th {
+.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th, .canslim table thead tr th {
   padding: 10px;
   border: 1px solid #202b33;
   background: #202b33;
   color: white;
 }
 
-.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button {
+.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button, .canslim table thead tr th button {
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -325,28 +325,28 @@ header .title-web {
   height: 30px;
 }
 
-.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover {
+.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover, .canslim table thead tr th button:hover {
   background-color: #ca0f0f;
   color: white;
 }
 
-.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th {
+.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th, .canslim table tbody tr th {
   background: #9dbade;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th {
+.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th, .canslim table tbody tr.parentData th {
   text-align: left;
   background: #9dbade;
   text-transform: uppercase;
 }
 
-.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td {
+.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td, .canslim table tbody tr td {
   background: #f2fcff;
   padding: 7px;
 }
 
-.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td {
+.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td, .canslim table tbody tr.childData td {
   background: #f2fcff;
   padding: 7px;
   font-weight: 700;
@@ -366,6 +366,66 @@ header .title-web {
   left: 30%;
   color: #fff;
   font-family: "Antonio", sans-serif;
+}
+
+.can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so, .canslim {
+  width: 95%;
+  margin: 100px auto;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.can-doi-ke-toan h1, .ket-qua-hoat-dong-kinh-doanh h1, .luu-chuyen-tien-te-gian-tiep h1, .bo-11-chi-so h1, .canslim h1 {
+  text-align: center;
+  color: #ca0f0f;
+}
+
+.can-doi-ke-toan table, .ket-qua-hoat-dong-kinh-doanh table, .luu-chuyen-tien-te-gian-tiep table, .bo-11-chi-so table, .canslim table {
+  width: 95%;
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+.can-doi-ke-toan table thead tr th, .ket-qua-hoat-dong-kinh-doanh table thead tr th, .luu-chuyen-tien-te-gian-tiep table thead tr th, .bo-11-chi-so table thead tr th, .canslim table thead tr th {
+  padding: 10px;
+  border: 1px solid #202b33;
+  background: #202b33;
+  color: white;
+}
+
+.can-doi-ke-toan table thead tr th button, .ket-qua-hoat-dong-kinh-doanh table thead tr th button, .luu-chuyen-tien-te-gian-tiep table thead tr th button, .bo-11-chi-so table thead tr th button, .canslim table thead tr th button {
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: white;
+  width: 100px;
+  height: 30px;
+}
+
+.can-doi-ke-toan table thead tr th button:hover, .ket-qua-hoat-dong-kinh-doanh table thead tr th button:hover, .luu-chuyen-tien-te-gian-tiep table thead tr th button:hover, .bo-11-chi-so table thead tr th button:hover, .canslim table thead tr th button:hover {
+  background-color: #ca0f0f;
+  color: white;
+}
+
+.can-doi-ke-toan table tbody tr th, .ket-qua-hoat-dong-kinh-doanh table tbody tr th, .luu-chuyen-tien-te-gian-tiep table tbody tr th, .bo-11-chi-so table tbody tr th, .canslim table tbody tr th {
+  background: #9dbade;
+  padding: 7px;
+}
+
+.can-doi-ke-toan table tbody tr.parentData th, .ket-qua-hoat-dong-kinh-doanh table tbody tr.parentData th, .luu-chuyen-tien-te-gian-tiep table tbody tr.parentData th, .bo-11-chi-so table tbody tr.parentData th, .canslim table tbody tr.parentData th {
+  text-align: left;
+  background: #9dbade;
+  text-transform: uppercase;
+}
+
+.can-doi-ke-toan table tbody tr td, .ket-qua-hoat-dong-kinh-doanh table tbody tr td, .luu-chuyen-tien-te-gian-tiep table tbody tr td, .bo-11-chi-so table tbody tr td, .canslim table tbody tr td {
+  background: #f2fcff;
+  padding: 7px;
+}
+
+.can-doi-ke-toan table tbody tr.childData td, .ket-qua-hoat-dong-kinh-doanh table tbody tr.childData td, .luu-chuyen-tien-te-gian-tiep table tbody tr.childData td, .bo-11-chi-so table tbody tr.childData td, .canslim table tbody tr.childData td {
+  background: #f2fcff;
+  padding: 7px;
+  font-weight: 700;
 }
 
 .loader,

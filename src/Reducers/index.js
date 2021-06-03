@@ -11,6 +11,8 @@ const initialState = {
     chiSoDN_4M: [],
     diemDN_4M: [],
     tongDiem: null,
+    canslim: [],
+    tongDiemCanslim: null,
     loading: false,
     currentPage: '',
 }
@@ -41,6 +43,8 @@ const rootReducer = (state = initialState, action) => {
             return {...state, loading: false};
         case 'setCurrentPage':
             return {...state, currentPage: action.payload};
+        case 'setChiSoCanslim': 
+            return {...state, canslim: action.payload};
         default:
             return state;
     }
@@ -59,5 +63,5 @@ export const store = compose(
 
 export const persistor = persistStore(store);
 
-// export default {rootReducer, persistor};
-export default rootReducer;
+export default {rootReducer, persistor};
+// export default rootReducer;

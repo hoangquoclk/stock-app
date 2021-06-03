@@ -78,3 +78,10 @@ export const setCurrentPage = (data) => {
         payload: data
     }
 }
+
+export const setChiSoCanslim = (data) => {
+    return {
+        type: 'setChiSoCanslim',
+        payload: data
+    }
+}
