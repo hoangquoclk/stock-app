@@ -1267,20 +1267,20 @@ const FourM = () => {
                         chiSoDN_4M.map((item, index) => {
                             if(index === 4) {
                                 return  <tr key={index} className="parentData">
-                                    <th>{item[0]}</th>
-                                    <th>{item[1]}</th>
-                                    <th colSpan="4">{item[2]}</th>
-                                    <th>{item[3]}</th>
+                                    <th style={{backgroundColor: '#f1c561'}}>{item[0]}</th>
+                                    <th style={{backgroundColor: '#e9f8ff'}}>{item[1]}</th>
+                                    <th colSpan="4" style={{backgroundColor: '#f1c561'}}>{item[2]}</th>
+                                    <th style={{backgroundColor: '#03aafb'}}>{item[3]}</th>
                                 </tr>
                             }
                             return <tr key={index} className="parentData">
-                                    <th>{item[0]}</th>
-                                    <th>{item[1]}</th>
-                                    <th>{item[2]}</th>
-                                    <th>{item[3]}</th>
-                                    <th>{item[4]}</th>
-                                    <th>{item[5]}</th>
-                                    <th>{item[6]}</th>
+                                    <th style={{backgroundColor: '#f1c561'}}>{item[0]}</th>
+                                    <th style={{backgroundColor: '#e9f8ff'}}>{item[1]}</th>
+                                    <th style={{backgroundColor: '#c9ecfd'}}>{item[2]}</th>
+                                    <th style={{backgroundColor: '#91d7f9'}}>{item[3]}</th>
+                                    <th style={{backgroundColor: '#60cbff'}}>{item[4]}</th>
+                                    <th style={{backgroundColor: '#33bbfd'}}>{item[5]}</th>
+                                    <th style={{backgroundColor: '#03aafb'}}>{item[6]}</th>
                                 </tr>
                         }) 
                     }     
@@ -1339,27 +1339,41 @@ const FourM = () => {
                     <tbody>
                     {
                         diemDN_4M.map((diem, index) => {
+                            if(index === 4) {
+                                return (
+                                    <tr key={index} className="parentData">
+                                        <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
+                                        <th style={{backgroundColor: '#9efb87'}}>{diem[2]}</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
+                                        <th>{typeof diem[4] !== 'string' ? `${diem[4] * 100}%` : diem[4]}</th>
+                                        <th>{diem[5] * 100}%</th>
+                                        <th>{diem[6]}</th>
+                                        <th style={{backgroundColor: '#ff9393'}}>{diem[7]}</th>
+                                    </tr>
+                                );
+                            }
                             if(index === 5 || index === 6 || index === 7) {
                                 if(index === 5) {
                                     return (
                                         <tr key={index} className="parentData">
-                                            <th>{diem[0]}</th>
-                                            <th>{diem[1]}</th>
-                                            <th>{diem[2]}</th>
-                                            <th>{diem[3]}</th>
+                                            <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
+                                            <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
+                                            <th style={{backgroundColor: '#bf8bef'}}>{diem[2]}</th>
+                                            <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
                                             <th>{diem[4]}</th>
                                             <th rowSpan="3">{diem[5]}</th>
                                             <th>{diem[6]}</th>
-                                            <th rowSpan="3">{diem[7]}</th>
+                                            <th rowSpan="3" style={{backgroundColor: '#ff9393'}}>{diem[7]}</th>
                                         </tr>
                                     );
                                 }
                                 return (
                                     <tr key={index} className="parentData">
-                                        <th>{diem[0]}</th>
-                                        <th>{diem[1]}</th>
-                                        <th>{diem[2]}</th>
-                                        <th>{diem[3]}</th>
+                                        <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[2]}</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
                                         <th>{diem[4]}</th>
                                         <th>{diem[5]}</th>
                                     </tr>
@@ -1367,21 +1381,21 @@ const FourM = () => {
                             }
                             return (
                                 <tr key={index} className="parentData">
-                                    <th>{diem[0]}</th>
-                                    <th>{diem[1]}</th>
-                                    <th>{diem[2]}</th>
-                                    <th>{diem[3]}</th>
+                                    <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
+                                    <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
+                                    <th style={{backgroundColor: '#bf8bef'}}>{diem[2]}</th>
+                                    <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
                                     <th>{typeof diem[4] !== 'string' ? `${diem[4] * 100}%` : diem[4]}</th>
                                     <th>{diem[5] * 100}%</th>
                                     <th>{diem[6]}</th>
-                                    <th>{diem[7]}</th>
+                                    <th style={{backgroundColor: '#ff9393'}}>{diem[7]}</th>
                                 </tr>
                             );
                         })
                     }
-                        <tr className="Tong">
-                            <th colSpan="7">Tổng điểm</th>
-                            <th>{tongDiem}</th>
+                        <tr className="Tong" style={{fontSize: '1.2rem'}}>
+                            <th colSpan="7" style={{backgroundColor: 'yellow'}}>Tổng điểm</th>
+                            <th style={{backgroundColor: 'yellow', color: 'red'}}>{tongDiem}</th>
                         </tr>
                     </tbody>
                 </table>
@@ -1395,6 +1409,9 @@ const FourM = () => {
 
     return(
         <>
+        <div className="anh2">
+            <h1>PHÂN TÍCH CANSLIM DOANH NGHIỆP</h1>
+        </div>
         {
             canslim.length !== 0 && (
                 <div className="canslim">
@@ -1422,10 +1439,10 @@ const FourM = () => {
                             </th>
                         </tr>
                         <tr>
-                            <th>
+                            <th style={{backgroundColor: '#ff5a5a'}}>
                                 {canslim[8]}
                             </th>
-                            <th>
+                            <th style={{backgroundColor: '#ff5a5a'}}>
                                 {canslim[9]}
                             </th>
                         </tr>
@@ -1433,186 +1450,186 @@ const FourM = () => {
 
                     <tbody>
                         <tr className="childData">
-                            <td rowSpan="8">Tiêu chí SALE</td>
+                            <td rowSpan="8" style={{backgroundColor: 'orange'}}>Tiêu chí SALE</td>
                             <td rowSpan="2">1 Quý gần nhất (C)</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td>Q1 2020</td>
-                            <td>Q1 2021</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q1 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q1 2021</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td rowSpan="2">{canslim[0][2]}%</td>
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[0][2]}%</td>
                             <td rowSpan="2">{canslim[0][3]}%</td>
                             <td rowSpan="2">{canslim[0][4]}%</td>
                             <td rowSpan="2">{canslim[0][5]}</td>
                             <td rowSpan="2"></td>
-                            <td rowSpan="17">{canslim[10]}</td>
+                            <td rowSpan="17" style={{backgroundColor: 'yellow'}}>{canslim[10]}</td>
                         </tr>
                         <tr>
-                            <td>{canslim[0][0]}</td>
-                            <td>{canslim[0][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[0][0]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[0][1]}</td>
                         </tr>
                         <tr className="childData">
                             <td rowSpan="2">1 Quý trước đó gần nhất (C)</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td>Q4 2019</td>
-                            <td>Q4 2020</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q4 2019</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q4 2020</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td rowSpan="2">{canslim[1][2]}%</td>
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[1][2]}%</td>
                             <td rowSpan="2">{canslim[1][3]}%</td>
                             <td rowSpan="2">{canslim[1][4]}%</td>
                             <td rowSpan="2">{canslim[1][5]}</td>
                             <td rowSpan="2"></td>
                         </tr>
                         <tr>
-                            <td>{canslim[1][0]}</td>
-                            <td>{canslim[1][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[1][0]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[1][1]}</td>
                         </tr>
                         
                         <tr className="childData">
                             <td rowSpan="2">Trailing 12 tháng gần nhất (A)</td>
-                            <td>Q2 2019</td>
-                            <td>Q3 2019</td>
-                            <td>Q4 2019</td>
-                            <td>Q1 2020</td>
-                            <td>Q2 2020</td>
-                            <td>Q3 2020</td>
-                            <td>Q4 2020</td>
-                            <td>Q1 2021</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q2 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q3 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q4 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q1 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q2 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q3 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q4 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q1 2021</td>
                             
-                            <td rowSpan="2">{canslim[2][8]}%</td>
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[2][8]}%</td>
                             <td rowSpan="2">{canslim[2][9]}%</td>
                             <td rowSpan="2">{canslim[2][10]}%</td>
                             <td rowSpan="2"></td>
                             <td rowSpan="2">{canslim[2][11]}</td>
                         </tr>
                         <tr>
-                            <td>{canslim[2][0]}</td>
-                            <td>{canslim[2][1]}</td>
-                            <td>{canslim[2][2]}</td>
-                            <td>{canslim[2][3]}</td>
-                            <td>{canslim[2][4]}</td>
-                            <td>{canslim[2][5]}</td>
-                            <td>{canslim[2][6]}</td>
-                            <td>{canslim[2][7]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[2][0]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[2][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[2][2]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[2][3]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[2][4]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[2][5]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[2][6]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[2][7]}</td>
                         </tr>
                         <tr className="childData">
                             <td rowSpan="2">Trailing 12 tháng gần nhất trước đó (A)</td>
-                            <td>Q1 2019</td>
-                            <td>Q2 2019</td>
-                            <td>Q3 2019</td>
-                            <td>Q4 2019</td>
-                            <td>Q1 2020</td>
-                            <td>Q2 2020</td>
-                            <td>Q3 2020</td>
-                            <td>Q4 2020</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q1 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q2 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q3 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q4 2019</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q1 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q2 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q3 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q4 2020</td>
                             
-                            <td rowSpan="2">{canslim[3][8]}%</td>
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[3][8]}%</td>
                             <td rowSpan="2">{canslim[3][9]}%</td>
                             <td rowSpan="2">{canslim[3][10]}%</td>
                             <td rowSpan="2"></td>
                             <td rowSpan="2">{canslim[3][11]}</td>
                         </tr>
                         <tr>
-                            <td>{canslim[3][0]}</td>
-                            <td>{canslim[3][1]}</td>
-                            <td>{canslim[3][2]}</td>
-                            <td>{canslim[3][3]}</td>
-                            <td>{canslim[3][4]}</td>
-                            <td>{canslim[3][5]}</td>
-                            <td>{canslim[3][6]}</td>
-                            <td>{canslim[3][7]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[3][0]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[3][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[3][2]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[3][3]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[3][4]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[3][5]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[3][6]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[3][7]}</td>
                         </tr>
                         <tr>
-                            <td colSpan="15">
+                            <td colSpan="15" style={{backgroundColor: '#74de74'}}>
                             </td>
                         </tr>
 
 
                         
                         <tr className="childData">
-                            <td rowSpan="8">Tiêu chí EPS</td>
+                            <td rowSpan="8" style={{backgroundColor: '#de620b'}}>Tiêu chí EPS</td>
                             <td rowSpan="2">1 Quý gần nhất (C)</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td>Q1 2020</td>
-                            <td>Q1 2021</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q1 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q1 2021</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td rowSpan="2">{canslim[4][2]}%</td>
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[4][2]}%</td>
                             <td rowSpan="2">{canslim[4][3]}%</td>
                             <td rowSpan="2">{canslim[4][4]}%</td>
                             <td rowSpan="2">{canslim[4][5]}</td>
                             <td rowSpan="2"></td>
                         </tr>
                         <tr>
-                            <td>{canslim[4][0]}</td>
-                            <td>{canslim[4][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[4][0]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[4][1]}</td>
                         </tr>
                         <tr className="childData">
                             <td rowSpan="2">1 Quý trước đó gần nhất (C)</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td>Q4 2019</td>
-                            <td>Q4 2020</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q4 2019</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q4 2020</td>
                             <td colSpan="3" rowSpan="2"></td>
-                            <td rowSpan="2">{canslim[5][2]}%</td>
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[5][2]}%</td>
                             <td rowSpan="2">{canslim[5][3]}%</td>
                             <td rowSpan="2">{canslim[5][4]}%</td>
                             <td rowSpan="2">{canslim[5][5]}</td>
                             <td rowSpan="2"></td>
                         </tr>
                         <tr>
-                            <td>{canslim[5][0]}</td>
-                            <td>{canslim[5][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[5][0]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[5][1]}</td>
                         </tr>
                         
                         <tr className="childData">
                             <td rowSpan="2">Trailing 12 tháng gần nhất (A)</td>
-                            <td>Q2 2019</td>
-                            <td>Q3 2019</td>
-                            <td>Q4 2019</td>
-                            <td>Q1 2020</td>
-                            <td>Q2 2020</td>
-                            <td>Q3 2020</td>
-                            <td>Q4 2020</td>
-                            <td>Q1 2021</td>                   
-                            <td rowSpan="2">{canslim[6][8]}%</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q2 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q3 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q4 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q1 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q2 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q3 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q4 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q1 2021</td>                   
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[6][8]}%</td>
                             <td rowSpan="2">{canslim[6][9]}%</td>
                             <td rowSpan="2">{canslim[6][10]}%</td>
                             <td rowSpan="2"></td>
                             <td rowSpan="2">{canslim[6][11]}</td>
                         </tr>
                         <tr>
-                            <td>{canslim[6][0]}</td>
-                            <td>{canslim[6][1]}</td>
-                            <td>{canslim[6][2]}</td>
-                            <td>{canslim[6][3]}</td>
-                            <td>{canslim[6][4]}</td>
-                            <td>{canslim[6][5]}</td>
-                            <td>{canslim[6][6]}</td>
-                            <td>{canslim[6][7]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[6][0]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[6][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[6][2]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[6][3]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[6][4]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[6][5]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[6][6]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[6][7]}</td>
                         </tr>
                         <tr className="childData">
                             <td rowSpan="2">Trailing 12 tháng gần nhất trước đó (A)</td>
-                            <td>Q1 2019</td>
-                            <td>Q2 2019</td>
-                            <td>Q3 2019</td>
-                            <td>Q4 2019</td>
-                            <td>Q1 2020</td>
-                            <td>Q2 2020</td>
-                            <td>Q3 2020</td>
-                            <td>Q4 2020</td>                   
-                            <td rowSpan="2">{canslim[7][8]}%</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q1 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q2 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q3 2019</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>Q4 2019</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q1 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q2 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q3 2020</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>Q4 2020</td>                   
+                            <td rowSpan="2" style={{backgroundColor: '#13a013'}}>{canslim[7][8]}%</td>
                             <td rowSpan="2">{canslim[7][9]}%</td>
                             <td rowSpan="2">{canslim[7][10]}%</td>
                             <td rowSpan="2"></td>
                             <td rowSpan="2">{canslim[7][11]}</td>
                         </tr>
                         <tr>
-                            <td>{canslim[7][0]}</td>
-                            <td>{canslim[7][1]}</td>
-                            <td>{canslim[7][2]}</td>
-                            <td>{canslim[7][3]}</td>
-                            <td>{canslim[7][4]}</td>
-                            <td>{canslim[7][5]}</td>
-                            <td>{canslim[7][6]}</td>
-                            <td>{canslim[7][7]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[7][0]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[7][1]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[7][2]}</td>
+                            <td style={{backgroundColor: '#ffa6036b'}}>{canslim[7][3]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[7][4]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[7][5]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[7][6]}</td>
+                            <td style={{backgroundColor: '#98c8f3'}}>{canslim[7][7]}</td>
                         </tr>
                     </tbody>
                 </table>

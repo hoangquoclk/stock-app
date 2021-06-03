@@ -359,7 +359,14 @@ header .title-web {
   background: url(../src/image/4M.jpg) no-repeat center center fixed;
 }
 
-.anh h1 {
+.anh2 {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  background: url(../src/image/canslim.jpg) no-repeat center center fixed;
+}
+
+.anh h1, .anh2 h1 {
   position: absolute;
   font-size: 3rem;
   top: 40%;
@@ -367,6 +374,22 @@ header .title-web {
   color: #fff;
   font-family: "Antonio", sans-serif;
 }
+
+/* .anh, .anh2 {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  background: url(../src/image/4M.jpg) no-repeat center center fixed;
+}
+
+.anh h1, .anh2 h1 {
+  position: absolute;
+  font-size: 3rem;
+  top: 40%;
+  left: 30%;
+  color: #fff;
+  font-family: "Antonio", sans-serif;
+} */
 
 .can-doi-ke-toan, .ket-qua-hoat-dong-kinh-doanh, .luu-chuyen-tien-te-gian-tiep, .bo-11-chi-so, .canslim {
   width: 95%;
