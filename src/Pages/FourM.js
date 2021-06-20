@@ -1,15 +1,24 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import {setCdkt, setKqhdkd, setLcttgt, setChiSoDN_4M, setDiemDN_4M,
-     isLoading, unLoading, setTongDiem, setCurrentPage, setChiSoCanslim} from '../Actions';
+     isLoading, unLoading, setTongDiem, setCurrentPage, setChiSoCanslim,
+     setCdktQuy, setKqhdkdQuy, setLcttgtQuy} from '../Actions';
 import Loading from '../Components/Loading';
 
-const urlKQKD = "https://localhost:5001/api/home/kqkd";
-const urlCDKT = "https://localhost:5001/api/home/cdkt";
-const urlLCTTGT = "https://localhost:5001/api/home/lctt";
-const urlKQKD_Quy = "https://localhost:5001/api/home/kqkd-quy";
-const urlCDKT_Quy = "https://localhost:5001/api/home/cdkt-quy";
+// const urlKQKD = "https://localhost:5001/api/home/kqkd";
+// const urlCDKT = "https://localhost:5001/api/home/cdkt";
+// const urlLCTTGT = "https://localhost:5001/api/home/lctt";
+// const urlKQKD_Quy = "https://localhost:5001/api/home/kqkd-quy";
+// const urlCDKT_Quy = "https://localhost:5001/api/home/cdkt-quy";
+// const urlLCTTGT_Quy = "https://localhost:5001/api/home/lctt-quy";
+
+const urlKQKD = "http://stockproject123.somee.com/api/home/kqkd";
+const urlCDKT = "http://stockproject123.somee.com/api/home/cdkt";
+const urlLCTTGT = "http://stockproject123.somee.com/api/home/lctt";
+const urlKQKD_Quy = "http://stockproject123.somee.com/api/home/kqkd-quy";
+const urlCDKT_Quy = "http://stockproject123.somee.com/api/home/cdkt-quy";
+const urlLCTTGT_Quy = "http://stockproject123.somee.com/api/home/lctt-quy";
 
 const FourM = () => {
     const dispatch = useDispatch();
@@ -21,6 +30,12 @@ const FourM = () => {
     const kqhdkd = useSelector(state => state.kqhdkd);
 
     const lcttgt = useSelector(state => state.lcttgt);
+
+    const cdktQuy = useSelector(state => state.cdktQuy);
+
+    const kqhdkdQuy = useSelector(state => state.kqhdkdQuy);
+
+    const lcttgtQuy = useSelector(state => state.lcttgtQuy);
 
     const chiSoDN_4M = useSelector(state => state.chiSoDN_4M);
 
@@ -34,7 +49,6 @@ const FourM = () => {
 
     const canslim = useSelector(state => state.canslim);
 
-    const tongDiemCanslim = useSelector(state => state.tongDiemCanslim); 
 
     const year_periods = [1, 3, 5];
     const year_proportion = [30, 35, 35];
@@ -68,7 +82,7 @@ const FourM = () => {
         dispatch(isLoading());
 
         for(const year of years) {
-            var res = await axios({
+            await axios({
                 method: 'post',
                 url: urlKQKD,
                 data: {
@@ -136,6 +150,105 @@ const FourM = () => {
             cdkt_15, cdkt_16, cdkt_17, cdkt_18, cdkt_19, cdkt_20, cdkt_21, cdkt_22, cdkt_23];
         dispatch(setKqhdkd(data));
     }
+
+    const getDataKQHDKD_Quy = async(quys) => {
+        const bigData = [];
+        const cdkt_1 = [];
+        const cdkt_2 = [];
+        const cdkt_3 = [];
+        const cdkt_4 = [];
+        const cdkt_5 = [];
+        const cdkt_6 = [];
+        const cdkt_7 = [];
+        const cdkt_8 = [];
+        const cdkt_9 = [];
+        const cdkt_10 = [];
+        const cdkt_11 = [];
+        const cdkt_12 = [];
+        const cdkt_13 = [];
+        const cdkt_14 = [];
+        const cdkt_15 = [];
+        const cdkt_16 = [];
+        const cdkt_17 = [];
+        const cdkt_18 = [];
+        const cdkt_19 = [];
+        const cdkt_20 = [];
+        const cdkt_21 = [];
+        const cdkt_22 = [];
+        const cdkt_23 = [];
+        
+        dispatch(isLoading());
+
+        for(const quy of quys) {
+            await axios({
+                method: 'post',
+                url: urlKQKD_Quy,
+                data: {
+                    name: company,
+                    quy: quy.quy,
+                    year: quy.year
+                }
+            }).then(({data}) => {
+                bigData.push(data);
+                dispatch(unLoading());
+            });
+        }
+
+        bigData.map((item, index) => {
+            if(index === 0) {
+                cdkt_1.push(item[0][0]);
+                cdkt_2.push(item[1][0]);
+                cdkt_3.push(item[2][0]);
+                cdkt_4.push(item[3][0]);
+                cdkt_5.push(item[4][0]);
+                cdkt_6.push(item[5][0]);
+                cdkt_7.push(item[6][0]);
+                cdkt_8.push(item[7][0]);
+                cdkt_9.push(item[8][0]);
+                cdkt_10.push(item[9][0]);
+                cdkt_11.push(item[10][0]);
+                cdkt_12.push(item[11][0]);
+                cdkt_13.push(item[12][0]);
+                cdkt_14.push(item[13][0]);
+                cdkt_15.push(item[14][0]);
+                cdkt_16.push(item[15][0]);
+                cdkt_17.push(item[16][0]);
+                cdkt_18.push(item[17][0]);
+                cdkt_19.push(item[18][0]);
+                cdkt_20.push(item[19][0]);
+                cdkt_21.push(item[20][0]);
+                cdkt_22.push(item[21][0]);
+                cdkt_23.push(item[22][0]);
+            }
+            cdkt_1.push(item[0][1]);
+                cdkt_2.push(item[1][1]);
+                cdkt_3.push(item[2][1]);
+                cdkt_4.push(item[3][1]);
+                cdkt_5.push(item[4][1]);
+                cdkt_6.push(item[5][1]);
+                cdkt_7.push(item[6][1]);
+                cdkt_8.push(item[7][1]);
+                cdkt_9.push(item[8][1]);
+                cdkt_10.push(item[9][1]);
+                cdkt_11.push(item[10][1]);
+                cdkt_12.push(item[11][1]);
+                cdkt_13.push(item[12][1]);
+                cdkt_14.push(item[13][1]);
+                cdkt_15.push(item[14][1]);
+                cdkt_16.push(item[15][1]);
+                cdkt_17.push(item[16][1]);
+                cdkt_18.push(item[17][1]);
+                cdkt_19.push(item[18][1]);
+                cdkt_20.push(item[19][1]);
+                cdkt_21.push(item[20][1]);
+                cdkt_22.push(item[21][1]);
+                cdkt_23.push(item[22][1]);
+        });
+        const data = [cdkt_1, cdkt_2, cdkt_3, cdkt_4, cdkt_5,
+            cdkt_6, cdkt_7, cdkt_8, cdkt_9, cdkt_10, cdkt_11, cdkt_12, cdkt_13, cdkt_14,
+            cdkt_15, cdkt_16, cdkt_17, cdkt_18, cdkt_19, cdkt_20, cdkt_21, cdkt_22, cdkt_23];
+        dispatch(setKqhdkdQuy(data));
+    }
     
     const getDataCDKT = async(years) => {
         const bigData = [];
@@ -166,7 +279,7 @@ const FourM = () => {
         dispatch(isLoading());
 
         for(const year of years) {
-            var res = await axios({
+            await axios({
                 method: 'post',
                 url: urlCDKT,
                 data: {
@@ -235,6 +348,105 @@ const FourM = () => {
         dispatch(setCdkt(data));
     }
 
+    const getDataCDKT_Quy = async(quys) => {
+        const bigData = [];
+        const cdkt_1 = [];
+        const cdkt_2 = [];
+        const cdkt_3 = [];
+        const cdkt_4 = [];
+        const cdkt_5 = [];
+        const cdkt_6 = [];
+        const cdkt_7 = [];
+        const cdkt_8 = [];
+        const cdkt_9 = [];
+        const cdkt_10 = [];
+        const cdkt_11 = [];
+        const cdkt_12 = [];
+        const cdkt_13 = [];
+        const cdkt_14 = [];
+        const cdkt_15 = [];
+        const cdkt_16 = [];
+        const cdkt_17 = [];
+        const cdkt_18 = [];
+        const cdkt_19 = [];
+        const cdkt_20 = [];
+        const cdkt_21 = [];
+        const cdkt_22 = [];
+        const cdkt_23 = [];
+        
+        dispatch(isLoading());
+
+        for(const quy of quys) {
+            await axios({
+                method: 'post',
+                url: urlCDKT_Quy,
+                data: {
+                    name: company,
+                    quy: quy.quy,
+                    year: quy.year
+                }
+            }).then(({data}) => {
+                bigData.push(data);
+                dispatch(unLoading());
+            });
+        }
+
+        bigData.map((item, index) => {
+            if(index === 0) {
+                cdkt_1.push(item[0][0]);
+                cdkt_2.push(item[1][0]);
+                cdkt_3.push(item[4][0]);
+                cdkt_4.push(item[8][0]);
+                cdkt_5.push(item[17][0]);
+                cdkt_6.push(item[20][0]);
+                cdkt_7.push(item[26][0]);
+                cdkt_8.push(item[27][0]);
+                cdkt_9.push(item[35][0]);
+                cdkt_10.push(item[45][0]);
+                cdkt_11.push(item[48][0]);
+                cdkt_12.push(item[51][0]);
+                cdkt_13.push(item[57][0]);
+                cdkt_14.push(item[64][0]);
+                cdkt_15.push(item[65][0]);
+                cdkt_16.push(item[66][0]);
+                cdkt_17.push(item[81][0]);
+                cdkt_18.push(item[94][0]);
+                cdkt_19.push(item[95][0]);
+                cdkt_20.push(item[97][0]);
+                cdkt_21.push(item[115][0]);
+                cdkt_22.push(item[118][0]);
+                cdkt_23.push(item[119][0]);
+            }
+            cdkt_1.push(item[0][1]);
+            cdkt_2.push(item[1][1]);
+            cdkt_3.push(item[4][1]);
+            cdkt_4.push(item[8][1]);
+            cdkt_5.push(item[17][1]);
+            cdkt_6.push(item[20][1]);
+            cdkt_7.push(item[26][1]);
+            cdkt_8.push(item[27][1]);
+            cdkt_9.push(item[35][1]);
+            cdkt_10.push(item[45][1]);
+            cdkt_11.push(item[48][1]);
+            cdkt_12.push(item[51][1]);
+            cdkt_13.push(item[57][1]);
+            cdkt_14.push(item[64][1]);
+            cdkt_15.push(item[65][1]);
+            cdkt_16.push(item[66][1]);
+            cdkt_17.push(item[81][1]);
+            cdkt_18.push(item[94][1]);
+            cdkt_19.push(item[95][1]);
+            cdkt_20.push(item[97][1]);
+            cdkt_21.push(item[115][1]);
+            cdkt_22.push(item[118][1]);
+            cdkt_23.push(item[119][1]);
+        });
+        const data = [cdkt_1, cdkt_2, cdkt_3, cdkt_4, cdkt_5,
+            cdkt_6, cdkt_7, cdkt_8, cdkt_9, cdkt_10, cdkt_11, cdkt_12, cdkt_13, cdkt_14,
+            cdkt_15, cdkt_16, cdkt_17, cdkt_18, cdkt_19, cdkt_20, cdkt_21, cdkt_22, cdkt_23];
+        dispatch(setCdktQuy(data));
+    }
+
     const getDataLCTT = async(years) => {
         const bigData = [];
         const cdkt_1 = [];
@@ -247,7 +459,7 @@ const FourM = () => {
         dispatch(isLoading());
         
         for(const year of years) {
-            var res = await axios({
+            await axios({
                 method: 'post',
                 url: urlLCTTGT,
                 data: {
@@ -281,20 +493,113 @@ const FourM = () => {
         dispatch(setLcttgt(data));
     }
 
+    const getDataLCTT_Quy = async(quys) => {
+        const bigData = [];
+        const cdkt_1 = [];
+        const cdkt_2 = [];
+        const cdkt_3 = [];
+        const cdkt_4 = [];
+        const cdkt_5 = [];
+        const cdkt_6 = [];
 
-    const years = [2015, 2016, 2017, 2018, 2019, 2020];
+        dispatch(isLoading());
+        
+        for(const quy of quys) {
+            await axios({
+                method: 'post',
+                url: urlLCTTGT_Quy,
+                data: {
+                    name: company,
+                    quy: quy.quy,
+                    year: quy.year
+                }
+            }).then(({data}) => {
+                bigData.push(data);
+                dispatch(unLoading());
+            });
+        }
+
+        bigData.map((item, index) => {
+            if(index === 0) {
+                cdkt_1.push(item[0][0]);
+                cdkt_2.push(item[25][0]);
+                cdkt_3.push(item[26][0]);
+                cdkt_4.push(item[48][0]);
+                cdkt_5.push(item[49][0]);
+                cdkt_6.push(item[67][0]);
+            }
+            cdkt_1.push(item[0][1]);
+            cdkt_2.push(item[25][1]);
+            cdkt_3.push(item[26][1]);
+            cdkt_4.push(item[48][1]);
+            cdkt_5.push(item[49][1]);
+            cdkt_6.push(item[67][1]);
+        });
+        const data = [cdkt_1, cdkt_2, cdkt_3, cdkt_4, cdkt_5,
+            cdkt_6];
+        dispatch(setLcttgtQuy(data));
+    }
+
+    const currentDate = new Date();
+
+    const currentMonth = currentDate.getMonth() + 1;
+
+    const currentYear = currentDate.getFullYear();
+
+    let years = [];
+
+    for(let i = 0; i < 6; i++) {
+        years.unshift(currentYear-1-i);
+    }
+
+    let quys = [];
+    
+    const importQuys = (quy, year, arr) => {
+        for(let i = 0; i < 6; i++) {
+            if(quy === 0) {
+                quy = 4;
+                year--;
+            }
+            arr.unshift({
+                quy: quy,
+                year: year
+            });
+            quy--;
+        }
+    }
+
+    if(currentMonth > 5) {
+        importQuys(1, currentYear, quys);
+    }
+    else if(currentMonth > 8) {
+        importQuys(2, currentYear, quys);
+    }
+    else if(currentMonth > 11) {
+        importQuys(3, currentYear, quys);
+    }
+    else {
+        importQuys(4, currentYear - 1, quys);
+    }
+
     useEffect(() => {
         if(company) {
             getDataCDKT(years);
+            getDataCDKT_Quy(quys);
+            
             getDataKQHDKD(years);
+            getDataKQHDKD_Quy(quys);
+
             getDataLCTT(years);
+            getDataLCTT_Quy(quys);
+            
+
             dispatch(setCurrentPage('trangChinh'));
         }
     }, [company]);
 
     useEffect(() => {
         if(cdkt && kqhdkd && lcttgt) {
-            if(kqhdkd[19] && cdkt[19]) {
+            if(kqhdkd[19] && cdkt[19] && lcttgt[1]) {
                 createChiSoDN_4M();
             }
         }
@@ -307,11 +612,15 @@ const FourM = () => {
         }
     }, [chiSoDN_4M]);
 
+
     useEffect(() => {
-        if(company){
-            createCanslimDN();
+        if(kqhdkdQuy) {
+            if(kqhdkdQuy[19] && cdktQuy[19]) {
+                createCanslimDN(); 
+            }
+            
         }
-    }, [company]);
+    }, [kqhdkdQuy, cdktQuy]);
 
     const createChiSoDN_4M = () => {
         const data = [];
@@ -331,7 +640,7 @@ const FourM = () => {
         BVPS.push("BVPS");
         TTTT.push("Tăng trưởng tiền thuần từ HDKD");
         NoVaLoiNhuan.push("Nợ năm gần nhất");
-        NoVaLoiNhuan.push(parseFloat(cdkt[14][6].replace(/,/g, '')));
+        NoVaLoiNhuan.push(parseFloat(cdkt[16][6].replace(/,/g, '')));
         NoVaLoiNhuan.push("Lợi nhuận năm gần nhất");
         NoVaLoiNhuan.push(parseFloat(kqhdkd[19][6].replace(/,/g, '')));
         Effectiveness.push("Effectiveness");
@@ -459,11 +768,11 @@ const FourM = () => {
         BVPS.push("BVPS");
         TTTT.push("Tăng trưởng tiền thuần từ HDKD");
         NoVaLoiNhuan.push("Nợ năm gần nhất");
-        NoVaLoiNhuan.push(parseFloat(cdkt[14][6].replace(/,/g, '')));
+        NoVaLoiNhuan.push(parseFloat(cdkt[16][6].replace(/,/g, '')));
         NoVaLoiNhuan.push("Lợi nhuận năm gần nhất");
         NoVaLoiNhuan.push(parseFloat(kqhdkd[19][6].replace(/,/g, '')));
         NoVaLoiNhuan.push("< 3*Lợi Nhuận");
-        NoVaLoiNhuan.push(0.1);
+        NoVaLoiNhuan.push(0.2);
         if(NoVaLoiNhuan[1] < 3 * NoVaLoiNhuan[3]) {
             NoVaLoiNhuan.push(100);
         }
@@ -542,37 +851,25 @@ const FourM = () => {
 
     }
 
-    // const getKQKDQuy = async(company, year, quy) => {
-    //     const data = await axios({
-    //         method: 'post',
-    //         url: urlKQKD_Quy,
-    //         data: {
-    //             name: company,
-    //             quy: quy,
-    //             year: year
-    //         }
-    //     }).then(({data}) => data);
-    //     return data;
-    // }
-
 
     const createCanslimDN = async() => {
         const data = [];
-        const SALE1 = [];
-        const SALE2 = [];
-        const SALE3 = [];
-        const SALE4 = [];
-        const EPS1 = [];
-        const EPS2 = [];
-        const EPS3 = [];
-        const EPS4 = [];
+        const SALE1 = [0,0];
+        const SALE2 = [0,0];
+        const SALE3 = [0,0,0,0,0,0,0,0,0];
+        const SALE4 = [0,0,0,0,0,0,0,0,0];
+        const EPS1 = [0,0];
+        const EPS2 = [0,0];
+        const EPS3 = [0,0,0,0,0,0,0,0,0];
+        const EPS4 = [0,0,0,0,0,0,0,0,0];
         const COPHIEU = [];
         const LOINHUAN = [];
         let C = null;
         let A = null;
         let TongDiem = null;
 
-        const kqhdkd_1_2019 = await axios({
+        //const kqhdkd_1_2019 = 
+        await axios({
             method: 'post',
             url: urlKQKD_Quy,
             data: {
@@ -585,7 +882,7 @@ const FourM = () => {
             LOINHUAN[0] = parseFloat(data[19][1].replace(/,/g, ''));
         });
 
-        const kqhdkd_2_2019 = await axios({
+        await axios({
             method: 'post',
             url: urlKQKD_Quy,
             data: {
@@ -599,7 +896,7 @@ const FourM = () => {
             LOINHUAN[1] = parseFloat(data[19][1].replace(/,/g, ''));
         });
 
-        const kqhdkd_3_2019 = await axios({
+        await axios({
             method: 'post',
             url: urlKQKD_Quy,
             data: {
@@ -613,95 +910,39 @@ const FourM = () => {
             LOINHUAN[2] = parseFloat(data[19][1].replace(/,/g, ''));
         });
 
-        const kqhdkd_4_2019 = await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 4,
-                year: 2019
-            }
-        }).then(({data}) => {
-            SALE2[0] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE3[2] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE4[3] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[3] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+
+        SALE2[0] = parseFloat(kqhdkdQuy[0][1].replace(/,/g, ''));
+        SALE3[2] = parseFloat(kqhdkdQuy[0][1].replace(/,/g, ''));
+        SALE4[3] = parseFloat(kqhdkdQuy[0][1].replace(/,/g, ''));
+        LOINHUAN[3] = parseFloat(kqhdkdQuy[19][1].replace(/,/g, ''));
         
-        const kqhdkd_1_2020 = await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 1,
-                year: 2020
-            }
-        }).then(({data}) => {
-            SALE1[0] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE3[3] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE4[4] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[4] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+        SALE1[0] = parseFloat(kqhdkdQuy[0][2].replace(/,/g, ''));
+        SALE3[3] = parseFloat(kqhdkdQuy[0][2].replace(/,/g, ''));
+        SALE4[4] = parseFloat(kqhdkdQuy[0][2].replace(/,/g, ''));
+        LOINHUAN[4] = parseFloat(kqhdkdQuy[19][2].replace(/,/g, ''));
 
-        const kqhdkd_2_2020 = await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 2,
-                year: 2020
-            }
-        }).then(({data}) => {
-            SALE3[4] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE4[5] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[5] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+        SALE3[4] = parseFloat(kqhdkdQuy[0][3].replace(/,/g, ''));
+        SALE4[5] = parseFloat(kqhdkdQuy[0][3].replace(/,/g, ''));
+        LOINHUAN[5] = parseFloat(kqhdkdQuy[19][3].replace(/,/g, ''));
 
-        const kqhdkd_3_2020 = await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 3,
-                year: 2020
-            }
-        }).then(({data}) => {
-            SALE3[5] = parseFloat(data[0][1].replace(/,/g, '')); 
-            SALE4[6] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[6] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
 
-        const kqhdkd_4_2020 = await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 4,
-                year: 2020
-            }
-        }).then(({data}) => {
-            SALE2[1] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE3[6] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE4[7] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[7] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+        SALE3[5] = parseFloat(kqhdkdQuy[0][4].replace(/,/g, '')); 
+        SALE4[6] = parseFloat(kqhdkdQuy[0][4].replace(/,/g, ''));
+        LOINHUAN[6] = parseFloat(kqhdkdQuy[19][4].replace(/,/g, ''));
 
-        const kqhdkd_1_2021 = await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 1,
-                year: 2021
-            }
-        }).then(({data}) => {
-            SALE1[1] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE3[7] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[8] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+        SALE2[1] = parseFloat(kqhdkdQuy[0][5].replace(/,/g, ''));
+        SALE3[6] = parseFloat(kqhdkdQuy[0][5].replace(/,/g, ''));
+        SALE4[7] = parseFloat(kqhdkdQuy[0][5].replace(/,/g, ''));
+        LOINHUAN[7] = parseFloat(kqhdkdQuy[19][5].replace(/,/g, ''));
+
+
+        SALE1[1] = parseFloat(kqhdkdQuy[0][6].replace(/,/g, ''));
+        SALE3[7] = parseFloat(kqhdkdQuy[0][6].replace(/,/g, ''));
+        LOINHUAN[8] = parseFloat(kqhdkdQuy[19][6].replace(/,/g, ''));
 
         // LAY SO CO PHIEU
-        const cdkt_1_2019 = await axios({
+        //const cdkt_1_2019 = 
+        await axios({
             method: 'post',
             url: urlCDKT_Quy,
             data: {
@@ -713,7 +954,7 @@ const FourM = () => {
             COPHIEU[0] = parseFloat(data[97][1].replace(/,/g, ''));
         });
 
-        const cdkt_2_2019 = await axios({
+        await axios({
             method: 'post',
             url: urlCDKT_Quy,
             data: {
@@ -725,7 +966,7 @@ const FourM = () => {
             COPHIEU[1] = parseFloat(data[97][1].replace(/,/g, ''));
         });
 
-        const cdkt_3_2019 = await axios({
+        await axios({
             method: 'post',
             url: urlCDKT_Quy,
             data: {
@@ -737,94 +978,133 @@ const FourM = () => {
             COPHIEU[2] = parseFloat(data[97][1].replace(/,/g, ''));
         });
 
-        const cdkt_4_2019 = await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 4,
-                year: 2019
-            }
-        }).then(({data}) => {
-            COPHIEU[3] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
-        
-        const cdkt_1_2020 = await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 1,
-                year: 2020
-            }
-        }).then(({data}) => {
-            COPHIEU[4] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
+        // await axios({
+        //     method: 'post',
+        //     url: urlCDKT_Quy,
+        //     data: {
+        //         name: company,
+        //         quy: 4,
+        //         year: 2019
+        //     }
+        // }).then(({data}) => {
+        //     COPHIEU[3] = parseFloat(data[97][1].replace(/,/g, ''));
+        // });
+        COPHIEU[3] = parseFloat(cdktQuy[19][1].replace(/,/g, ''));
+        COPHIEU[4] = parseFloat(cdktQuy[19][2].replace(/,/g, ''));
+        COPHIEU[5] = parseFloat(cdktQuy[19][3].replace(/,/g, ''));
+        COPHIEU[6] = parseFloat(cdktQuy[19][4].replace(/,/g, ''));
+        COPHIEU[7] = parseFloat(cdktQuy[19][5].replace(/,/g, ''));
+        COPHIEU[8] = parseFloat(cdktQuy[19][6].replace(/,/g, ''));
+        // await axios({
+        //     method: 'post',
+        //     url: urlCDKT_Quy,
+        //     data: {
+        //         name: company,
+        //         quy: 1,
+        //         year: 2020
+        //     }
+        // }).then(({data}) => {
+        //     COPHIEU[4] = parseFloat(data[97][1].replace(/,/g, ''));
+        // });
 
-        const cdkt_2_2020 = await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 2,
-                year: 2020
-            }
-        }).then(({data}) => {
-            COPHIEU[5] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
+        // await axios({
+        //     method: 'post',
+        //     url: urlCDKT_Quy,
+        //     data: {
+        //         name: company,
+        //         quy: 2,
+        //         year: 2020
+        //     }
+        // }).then(({data}) => {
+        //     COPHIEU[5] = parseFloat(data[97][1].replace(/,/g, ''));
+        // });
 
-        const cdkt_3_2020 = await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 3,
-                year: 2020
-            }
-        }).then(({data}) => {
-            COPHIEU[6] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
+        // await axios({
+        //     method: 'post',
+        //     url: urlCDKT_Quy,
+        //     data: {
+        //         name: company,
+        //         quy: 3,
+        //         year: 2020
+        //     }
+        // }).then(({data}) => {
+        //     COPHIEU[6] = parseFloat(data[97][1].replace(/,/g, ''));
+        // });
 
-        const cdkt_4_2020 = await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 4,
-                year: 2020
-            }
-        }).then(({data}) => {
-            COPHIEU[7] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
+        // await axios({
+        //     method: 'post',
+        //     url: urlCDKT_Quy,
+        //     data: {
+        //         name: company,
+        //         quy: 4,
+        //         year: 2020
+        //     }
+        // }).then(({data}) => {
+        //     COPHIEU[7] = parseFloat(data[97][1].replace(/,/g, ''));
+        // });
 
-        const cdkt_1_2021 = await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 1,
-                year: 2021
-            }
-        }).then(({data}) => {
-            COPHIEU[8] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
+        // await axios({
+        //     method: 'post',
+        //     url: urlCDKT_Quy,
+        //     data: {
+        //         name: company,
+        //         quy: 1,
+        //         year: 2021
+        //     }
+        // }).then(({data}) => {
+        //     COPHIEU[8] = parseFloat(data[97][1].replace(/,/g, ''));
+        // });
 
         for(let i = 0; i < COPHIEU.length; i++) {
             if(isNaN(COPHIEU[i])) {
-                if(i === COPHIEU.length - 1) {
-                    COPHIEU[i] = COPHIEU[i-1];
+                if(i === 0) {
+                    COPHIEU[i] = COPHIEU[i+1];
                 }
                 else {
-                    COPHIEU[i] = COPHIEU[i+1];
+                    COPHIEU[i] = COPHIEU[i-1];
                 }
             }
 
             if(isNaN(LOINHUAN[i])) {
-                if(i === COPHIEU.length - 1) {
-                    LOINHUAN[i] = LOINHUAN[i-1];
+                if(i === 0) {
+                    LOINHUAN[i] = LOINHUAN[i+1];
                 }
                 else {
-                    LOINHUAN[i] = LOINHUAN[i+1];
+                    LOINHUAN[i] = LOINHUAN[i-1];
+                }
+            }
+
+            if(isNaN(SALE1[i])) {
+                if(i === 0) {
+                    SALE1[i] = SALE1[i+1];
+                }
+                else {
+                    SALE1[i] = SALE1[i-1];
+                }
+            }
+
+            if(isNaN(SALE2[i])) {
+                if(i === 0) {
+                    SALE2[i] = SALE2[i+1];
+                }
+                else {
+                    SALE2[i] = SALE2[i-1];
+                }
+            }
+            if(isNaN(SALE3[i])) {
+                if(i === 0) {
+                    SALE3[i] = SALE3[i+1];
+                }
+                else {
+                    SALE3[i] = SALE3[i-1];
+                }
+            }
+            if(isNaN(SALE4[i])) {
+                if(i === 0) {
+                    SALE4[i] = SALE4[i+1];
+                }
+                else {
+                    SALE4[i] = SALE4[i-1];
                 }
             }
         }
@@ -965,7 +1245,12 @@ const FourM = () => {
         C = SALE1[5] + SALE2[5] + EPS1[5] + EPS2[5];
         A = SALE3[11] + SALE4[11] + EPS3[11] + EPS4[11];
 
+        C = Math.round(C * 100) /100;
+        A = Math.round(A * 100) /100;
+
         TongDiem = A + C;
+
+        TongDiem = Math.round(TongDiem * 100)/100;
 
         data.push(SALE1);
         data.push(SALE2);
@@ -1235,6 +1520,254 @@ const FourM = () => {
         );
     }
 
+    else if(currentPage === 'quy') {
+        return (
+            <>
+        {
+            cdktQuy.length !== 0 && (
+                <div className="can-doi-ke-toan">
+                <h1>CÂN ĐỐI KẾ TOÁN</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Chỉ số
+                            </th>
+                            {
+                                quys.map((quy, index) => {
+                                    return (
+                                        <th key={index}>
+                                            Qúy {quy.quy} - {quy.year}
+                                        </th>
+                                    );
+                                })
+                            }
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        {
+                            cdktQuy.map((item, index) => {
+                                if(index === 0 || index === 6 || index === 14 || index === 17
+                                    || index === 20
+                                ) {
+                                    return (
+                                        <tr className="parentData" key={index}>
+                                            <th>{item[0]}</th>
+                                            <th>
+                                                {item[1]}
+                                            </th>
+                                            <th>
+                                                {item[2]}
+                                            </th>
+                                            <th>
+                                                {item[3]}
+                                            </th>
+                                            <th>
+                                                {item[4]}
+                                            </th>
+                                            <th>
+                                                {item[5]}
+                                            </th>
+                                            <th>
+                                                {item[6]}
+                                            </th>
+                                        </tr>
+                                    );
+                                    }
+                                else if (index === 13 || index === 21){
+                                    return (
+                                        <tr key={index}>
+                                            <th>{item[0]}</th>
+                                            <th>
+                                                {item[1]}
+                                            </th>
+                                            <th>
+                                                {item[2]}
+                                            </th>
+                                            <th>
+                                                {item[3]}
+                                            </th>
+                                            <th>
+                                                {item[4]}
+                                            </th>
+                                            <th>
+                                                {item[5]}
+                                            </th>
+                                            <th>
+                                                {item[6]}
+                                            </th>
+                                        </tr>
+                                    );
+                                }
+                                return (
+                                    <tr key={index}>
+                                        <td>{item[0]}</td>
+                                        <td>{item[1]}</td>
+                                        <td>{item[2]}</td>
+                                        <td>{item[3]}</td>
+                                        <td>{item[4]}</td>
+                                        <td>{item[5]}</td>
+                                        <td>{item[6]}</td>
+                                    </tr>
+                                );
+                            })
+                        }
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+            )
+        }
+
+        {
+            kqhdkdQuy.length !== 0 && (
+                <div className="ket-qua-hoat-dong-kinh-doanh">
+                <h1>KẾT QUẢ HOẠT ĐỘNG KINH DOANH</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Chỉ số
+                            </th>
+                            {
+                                quys.map((quy, index) => {
+                                    return (
+                                        <th key={index}>
+                                            Qúy {quy.quy} - {quy.year}
+                                        </th>
+                                    );
+                                })
+                            }
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {
+                            kqhdkdQuy.map((item, index) => {
+                                if(index === 0 || index === 1 || index === 2 || index === 4
+                                    || index === 10 || index === 13 || index === 14 || index === 17
+                                    || index === 19
+                                ) {
+                                    return (
+                                        <tr key={index}>
+                                            <th>{item[0]}</th>
+                                            <th>
+                                                {item[1]}
+                                            </th>
+                                            <th>
+                                                {item[2]}
+                                            </th>
+                                            <th>
+                                                {item[3]}
+                                            </th>
+                                            <th>
+                                                {item[4]}
+                                            </th>
+                                            <th>
+                                                {item[5]}
+                                            </th>
+                                            <th>
+                                                {item[6]}
+                                            </th>
+                                        </tr>
+                                    );
+                                    }
+                                return (
+                                    <tr key={index}>
+                                        <td>{item[0]}</td>
+                                        <td>{item[1]}</td>
+                                        <td>{item[2]}</td>
+                                        <td>{item[3]}</td>
+                                        <td>{item[4]}</td>
+                                        <td>{item[5]}</td>
+                                        <td>{item[6]}</td>
+                                    </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+            )
+        }
+            
+            
+        {
+            lcttgtQuy.length !== 0 && (
+                <div className="luu-chuyen-tien-te-gian-tiep">
+                <h1>LƯU CHUYỂN TIỀN TỆ GIÁN TIẾP</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Chỉ số
+                            </th>
+                            {
+                                quys.map((quy, index) => {
+                                    return (
+                                        <th key={index}>
+                                            Qúy {quy.quy} - {quy.year}
+                                        </th>
+                                    );
+                                })
+                            }
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {
+                        lcttgtQuy.map((item, index) => {
+                            if(index === 0 || index === 2 || index === 4 
+                            ) {
+                                return (
+                                    <tr className="parentData" key={index}>
+                                        <th>{item[0]}</th>
+                                        <th>
+                                            {item[1]}
+                                        </th>
+                                        <th>
+                                            {item[2]}
+                                        </th>
+                                        <th>
+                                            {item[3]}
+                                        </th>
+                                        <th>
+                                            {item[4]}
+                                        </th>
+                                        <th>
+                                            {item[5]}
+                                        </th>
+                                        <th>
+                                            {item[6]}
+                                        </th>
+                                    </tr>
+                                );
+                                }
+                            return (
+                                <tr key={index}>
+                                    <td>{item[0]}</td>
+                                    <td>{item[1]}</td>
+                                    <td>{item[2]}</td>
+                                    <td>{item[3]}</td>
+                                    <td>{item[4]}</td>
+                                    <td>{item[5]}</td>
+                                    <td>{item[6]}</td>
+                                </tr>
+                            );
+                        })
+                    }
+                    </tbody>
+                </table>
+            </div>
+            )
+        }
+            </>
+        );
+    }
+
     else if(currentPage === '4M') {
         return (
             <>
@@ -1358,11 +1891,11 @@ const FourM = () => {
                                     return (
                                         <tr key={index} className="parentData">
                                             <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
-                                            <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
-                                            <th style={{backgroundColor: '#bf8bef'}}>{diem[2]}</th>
-                                            <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
-                                            <th>{diem[4]}</th>
-                                            <th rowSpan="3">{diem[5]}</th>
+                                            <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[1]*100*100)/100}%</th>
+                                            <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[2]*100*100)/100}%</th>
+                                            <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[3]*100*100)/100}%</th>
+                                            <th>{diem[4] * 100}%</th>
+                                            <th rowSpan="3">{diem[5] * 100}%</th>
                                             <th>{diem[6]}</th>
                                             <th rowSpan="3" style={{backgroundColor: '#ff9393'}}>{diem[7]}</th>
                                         </tr>
@@ -1371,10 +1904,10 @@ const FourM = () => {
                                 return (
                                     <tr key={index} className="parentData">
                                         <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
-                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
-                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[2]}</th>
-                                        <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
-                                        <th>{diem[4]}</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[1]*100*100)/100}%</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[2]*100*100)/100}%</th>
+                                        <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[3]*100*100)/100}%</th>
+                                        <th>{diem[4]*100}%</th>
                                         <th>{diem[5]}</th>
                                     </tr>
                                 );
@@ -1382,9 +1915,9 @@ const FourM = () => {
                             return (
                                 <tr key={index} className="parentData">
                                     <th style={{backgroundColor: '#9efb87'}}>{diem[0]}</th>
-                                    <th style={{backgroundColor: '#bf8bef'}}>{diem[1]}</th>
-                                    <th style={{backgroundColor: '#bf8bef'}}>{diem[2]}</th>
-                                    <th style={{backgroundColor: '#bf8bef'}}>{diem[3]}</th>
+                                    <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[1]*100*100)/100}%</th>
+                                    <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[2]*100*100)/100}%</th>
+                                    <th style={{backgroundColor: '#bf8bef'}}>{Math.round(diem[3]*100*100)/100}%</th>
                                     <th>{typeof diem[4] !== 'string' ? `${diem[4] * 100}%` : diem[4]}</th>
                                     <th>{diem[5] * 100}%</th>
                                     <th>{diem[6]}</th>
@@ -1407,13 +1940,17 @@ const FourM = () => {
         
     }
 
+    
+
     return(
         <>
-        <div className="anh2">
-            <h1>PHÂN TÍCH CANSLIM DOANH NGHIỆP</h1>
-        </div>
+        
         {
             canslim.length !== 0 && (
+                <>
+                <div className="anh2">
+                    <h1>PHÂN TÍCH CANSLIM DOANH NGHIỆP</h1>
+                </div>
                 <div className="canslim">
                 <h1>Canslim</h1>
                 <table>
@@ -1634,6 +2171,7 @@ const FourM = () => {
                     </tbody>
                 </table>
             </div>
+                </>
             )
         }
         </> 

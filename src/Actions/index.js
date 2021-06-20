@@ -5,6 +5,13 @@ export const setCdkt = (data) => {
     }
 }
 
+export const setCdktQuy = (data) => {
+    return {
+        type: 'setCdktQuy',
+        payload: data
+    }
+}
+
 export const setKqhdkd = (data) => {
     return {
         type: 'setKqhdkd',
@@ -12,9 +19,23 @@ export const setKqhdkd = (data) => {
     }
 }
 
+export const setKqhdkdQuy = (data) => {
+    return {
+        type: 'setKqhdkdQuy',
+        payload: data
+    }
+}
+
 export const setLcttgt = (data) => {
     return {
         type: 'setLcttgt',
+        payload: data
+    }
+}
+
+export const setLcttgtQuy = (data) => {
+    return {
+        type: 'setLcttgtQuy',
         payload: data
     }
 }

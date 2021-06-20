@@ -8,11 +8,13 @@ const initialState = {
     cdkt: [],
     kqhdkd: [],
     lcttgt: [],
+    cdktQuy: [],
+    kqhdkdQuy: [],
+    lcttgtQuy: [],
     chiSoDN_4M: [],
     diemDN_4M: [],
     tongDiem: null,
     canslim: [],
-    tongDiemCanslim: null,
     loading: false,
     currentPage: '',
 }
@@ -25,6 +27,12 @@ const rootReducer = (state = initialState, action) => {
             return {...state, kqhdkd: action.payload};
         case 'setLcttgt':
             return {...state, lcttgt: action.payload};
+        case 'setCdktQuy':
+            return {...state, cdktQuy: action.payload};
+        case 'setKqhdkdQuy':
+            return {...state, kqhdkdQuy: action.payload};
+        case 'setLcttgtQuy':
+            return {...state, lcttgtQuy: action.payload};
         case 'searchCompany':
             return {...state, company: action.payload};
         case 'setCompanyName':

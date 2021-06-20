@@ -8,6 +8,12 @@
           box-sizing: border-box;
 }
 
+.anhNen {
+  width: 100%;
+  height: 500px;
+  background-image: url(./image/nen.jpg);
+}
+
 header {
   width: 100%;
   height: 100px;
@@ -17,7 +23,7 @@ header {
       grid-template-columns: 20% 50%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  background: #0a3698;
+  background: rgba(0, 0, 0, 0.8);
   color: #ebebeb;
   font-family: "Antonio", sans-serif;
 }

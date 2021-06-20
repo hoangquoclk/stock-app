@@ -2,9 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchCompany, setCompanyName, resetState, setCurrentPage } from '../Actions';
-import { Link, Redirect } from 'react-router-dom';
 
-const url = 'https://localhost:5001/api/home/?mact=';
+const url = 'http://stockproject123.somee.com/api/home/?mact=';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -13,12 +12,12 @@ const Header = () => {
 
     const companyName = useSelector(state => state.companyName);
 
-    const currentPage = useSelector(state => state.currentPage);
+    // const currentPage = useSelector(state => state.currentPage);
 
     const searchRef = useRef();
 
     const getCompanyName = async() => {
-        const res = await axios({
+        await axios({
             method: 'get',
             url: url + company
         }).then(({data}) => {
@@ -65,7 +64,7 @@ const Header = () => {
             <div className="search">
                 
                     <label htmlFor="searchText">Mã</label>
-                    <input type="text" id="searchText" placeholder="MWG" autoComplete="off"
+                    <input type="text" id="searchText" placeholder="Company Code" autoComplete="off"
                     ref={searchRef}
                     />
                     {/* <input type="submit" id="btn-search"  /> */}
@@ -73,10 +72,14 @@ const Header = () => {
                 
             </div>
 
+            
+
             {
-                companyName && 
+                companyName ? 
                 <div className="company-name">
                     <h1>{companyName}</h1>
+                </div> :
+                <div className="anhNen">
                 </div>
             }
             
@@ -87,7 +90,12 @@ const Header = () => {
                 defaultChecked
                 onClick={() => handlePage()}
                  value="trangChinh" />
-                <label htmlFor="trangChinh">Thông tin chính</label>
+                <label htmlFor="trangChinh">Theo năm</label>
+
+                <input type="radio" name="analysis" id="quy" value="quy"
+                onClick={() => handlePage()} 
+                />
+                <label htmlFor="quy">Theo quý</label>
 
                 <input type="radio" name="analysis" id="4M" value="4M"
                 onClick={() => handlePage()} 
