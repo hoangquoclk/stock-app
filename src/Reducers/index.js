@@ -1,6 +1,6 @@
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { createStore, compose } from 'redux';
+// import { persistStore, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+// import { createStore, compose } from 'redux';
 
 const initialState = {
     company: null,
@@ -58,18 +58,18 @@ const rootReducer = (state = initialState, action) => {
     }
 }
 
-const persistConfig = {
-    key: 'root',
-    storage,
-}
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+// }
 
-export const persist_Reducer = persistReducer(persistConfig, rootReducer);
+// export const persist_Reducer = persistReducer(persistConfig, rootReducer);
 
-export const store = compose(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )(createStore)(persist_Reducer);
+// export const store = compose(
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//     )(createStore)(persist_Reducer);
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
 
-export default {rootReducer, persistor};
-// export default rootReducer;
+// export default {rootReducer, persistor};
+export default rootReducer;

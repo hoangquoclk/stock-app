@@ -13,12 +13,13 @@ import Loading from '../Components/Loading';
 // const urlCDKT_Quy = "https://localhost:5001/api/home/cdkt-quy";
 // const urlLCTTGT_Quy = "https://localhost:5001/api/home/lctt-quy";
 
-const urlKQKD = "http://stockproject123.somee.com/api/home/kqkd";
-const urlCDKT = "http://stockproject123.somee.com/api/home/cdkt";
-const urlLCTTGT = "http://stockproject123.somee.com/api/home/lctt";
-const urlKQKD_Quy = "http://stockproject123.somee.com/api/home/kqkd-quy";
-const urlCDKT_Quy = "http://stockproject123.somee.com/api/home/cdkt-quy";
-const urlLCTTGT_Quy = "http://stockproject123.somee.com/api/home/lctt-quy";
+const urlKQKD = "https://api20210620145933.azurewebsites.net/api/home/kqkd";
+const urlCDKT = "https://api20210620145933.azurewebsites.net/api/home/cdkt";
+const urlLCTTGT = "https://api20210620145933.azurewebsites.net/api/home/lctt";
+const urlKQKD_Quy = "https://api20210620145933.azurewebsites.net/api/home/kqkd-quy";
+const urlCDKT_Quy = "https://api20210620145933.azurewebsites.net/api/home/cdkt-quy";
+const urlLCTTGT_Quy = "https://api20210620145933.azurewebsites.net/api/home/lctt-quy";
+
 
 const FourM = () => {
     const dispatch = useDispatch();
@@ -552,10 +553,12 @@ const FourM = () => {
         years.unshift(currentYear-1-i);
     }
 
+    let allQuys = [];
     let quys = [];
+    let quysCanslim = [];
     
     const importQuys = (quy, year, arr) => {
-        for(let i = 0; i < 6; i++) {
+        for(let i = 0; i < 9; i++) {
             if(quy === 0) {
                 quy = 4;
                 year--;
@@ -569,16 +572,25 @@ const FourM = () => {
     }
 
     if(currentMonth > 5) {
-        importQuys(1, currentYear, quys);
+        importQuys(1, currentYear, allQuys);
     }
     else if(currentMonth > 8) {
-        importQuys(2, currentYear, quys);
+        importQuys(2, currentYear, allQuys);
     }
     else if(currentMonth > 11) {
-        importQuys(3, currentYear, quys);
+        importQuys(3, currentYear, allQuys);
     }
     else {
-        importQuys(4, currentYear - 1, quys);
+        importQuys(4, currentYear - 1, allQuys);
+    }
+
+    for(let i = 0; i < 9; i++) {
+        if(i<3) {
+            quysCanslim.push(allQuys[i]);
+        }
+        else {
+            quys.push(allQuys[i]);
+        }
     }
 
     useEffect(() => {
@@ -869,46 +881,51 @@ const FourM = () => {
         let TongDiem = null;
 
         //const kqhdkd_1_2019 = 
-        await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 1,
-                year: 2019
+        for(let i = 0; i < quysCanslim.length; i++) {
+            if(i === 0) {
+                await axios({
+                    method: 'post',
+                    url: urlKQKD_Quy,
+                    data: {
+                        name: company,
+                        quy: quysCanslim[i].quy,
+                        year: quysCanslim[i].year
+                    }
+                }).then(({data}) => {
+                    SALE4[i] = parseFloat(data[0][1].replace(/,/g, ''));
+                    LOINHUAN[i] = parseFloat(data[19][1].replace(/,/g, ''));
+                });
             }
-        }).then(({data}) => {
-            SALE4[0] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[0] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+            else {
+                await axios({
+                    method: 'post',
+                    url: urlKQKD_Quy,
+                    data: {
+                        name: company,
+                        quy: quysCanslim[i].quy,
+                        year: quysCanslim[i].year
+                    }
+                }).then(({data}) => {
+                    SALE3[i-1] = parseFloat(data[0][1].replace(/,/g, ''));
+                    SALE4[i] = parseFloat(data[0][1].replace(/,/g, ''));
+                    LOINHUAN[i] = parseFloat(data[19][1].replace(/,/g, ''));
+                });
+            }
 
-        await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 2,
-                year: 2019
-            }
-        }).then(({data}) => {
-            SALE3[0] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE4[1] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[1] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
-
-        await axios({
-            method: 'post',
-            url: urlKQKD_Quy,
-            data: {
-                name: company,
-                quy: 3,
-                year: 2019
-            }
-        }).then(({data}) => {
-            SALE3[1] = parseFloat(data[0][1].replace(/,/g, ''));
-            SALE4[2] = parseFloat(data[0][1].replace(/,/g, ''));
-            LOINHUAN[2] = parseFloat(data[19][1].replace(/,/g, ''));
-        });
+            // lay COPHIEU
+            await axios({
+                method: 'post',
+                url: urlCDKT_Quy,
+                data: {
+                    name: company,
+                    quy: quysCanslim[i].quy,
+                    year: quysCanslim[i].year
+                }
+            }).then(({data}) => {
+                COPHIEU[i] = parseFloat(data[97][1].replace(/,/g, ''));
+            });
+        }
+        
 
 
         SALE2[0] = parseFloat(kqhdkdQuy[0][1].replace(/,/g, ''));
@@ -940,120 +957,13 @@ const FourM = () => {
         SALE3[7] = parseFloat(kqhdkdQuy[0][6].replace(/,/g, ''));
         LOINHUAN[8] = parseFloat(kqhdkdQuy[19][6].replace(/,/g, ''));
 
-        // LAY SO CO PHIEU
-        //const cdkt_1_2019 = 
-        await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 1,
-                year: 2019
-            }
-        }).then(({data}) => {
-            COPHIEU[0] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
 
-        await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 2,
-                year: 2019
-            }
-        }).then(({data}) => {
-            COPHIEU[1] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
-
-        await axios({
-            method: 'post',
-            url: urlCDKT_Quy,
-            data: {
-                name: company,
-                quy: 3,
-                year: 2019
-            }
-        }).then(({data}) => {
-            COPHIEU[2] = parseFloat(data[97][1].replace(/,/g, ''));
-        });
-
-        // await axios({
-        //     method: 'post',
-        //     url: urlCDKT_Quy,
-        //     data: {
-        //         name: company,
-        //         quy: 4,
-        //         year: 2019
-        //     }
-        // }).then(({data}) => {
-        //     COPHIEU[3] = parseFloat(data[97][1].replace(/,/g, ''));
-        // });
         COPHIEU[3] = parseFloat(cdktQuy[19][1].replace(/,/g, ''));
         COPHIEU[4] = parseFloat(cdktQuy[19][2].replace(/,/g, ''));
         COPHIEU[5] = parseFloat(cdktQuy[19][3].replace(/,/g, ''));
         COPHIEU[6] = parseFloat(cdktQuy[19][4].replace(/,/g, ''));
         COPHIEU[7] = parseFloat(cdktQuy[19][5].replace(/,/g, ''));
         COPHIEU[8] = parseFloat(cdktQuy[19][6].replace(/,/g, ''));
-        // await axios({
-        //     method: 'post',
-        //     url: urlCDKT_Quy,
-        //     data: {
-        //         name: company,
-        //         quy: 1,
-        //         year: 2020
-        //     }
-        // }).then(({data}) => {
-        //     COPHIEU[4] = parseFloat(data[97][1].replace(/,/g, ''));
-        // });
-
-        // await axios({
-        //     method: 'post',
-        //     url: urlCDKT_Quy,
-        //     data: {
-        //         name: company,
-        //         quy: 2,
-        //         year: 2020
-        //     }
-        // }).then(({data}) => {
-        //     COPHIEU[5] = parseFloat(data[97][1].replace(/,/g, ''));
-        // });
-
-        // await axios({
-        //     method: 'post',
-        //     url: urlCDKT_Quy,
-        //     data: {
-        //         name: company,
-        //         quy: 3,
-        //         year: 2020
-        //     }
-        // }).then(({data}) => {
-        //     COPHIEU[6] = parseFloat(data[97][1].replace(/,/g, ''));
-        // });
-
-        // await axios({
-        //     method: 'post',
-        //     url: urlCDKT_Quy,
-        //     data: {
-        //         name: company,
-        //         quy: 4,
-        //         year: 2020
-        //     }
-        // }).then(({data}) => {
-        //     COPHIEU[7] = parseFloat(data[97][1].replace(/,/g, ''));
-        // });
-
-        // await axios({
-        //     method: 'post',
-        //     url: urlCDKT_Quy,
-        //     data: {
-        //         name: company,
-        //         quy: 1,
-        //         year: 2021
-        //     }
-        // }).then(({data}) => {
-        //     COPHIEU[8] = parseFloat(data[97][1].replace(/,/g, ''));
-        // });
 
         for(let i = 0; i < COPHIEU.length; i++) {
             if(isNaN(COPHIEU[i])) {

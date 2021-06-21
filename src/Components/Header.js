@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchCompany, setCompanyName, resetState, setCurrentPage } from '../Actions';
 
-const url = 'http://stockproject123.somee.com/api/home/?mact=';
+const url = 'https://api20210620145933.azurewebsites.net/api/home/?mact=';
+// const url = 'https://localhost:5001/api/home/?mact=';
 
 const Header = () => {
     const dispatch = useDispatch();
